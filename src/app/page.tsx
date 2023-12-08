@@ -16,7 +16,7 @@ export default function Home() {
       <MaxWidthWrapper>
         <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            <span className="text-rose-600">Saksham</span> Empowering People
+            <span className="text-rose-600">Saksham</span> Empowering People with Disabilities
           </h1>
           <p className="mt-6 text-lg max-w-prose text-muted-foreground">
             Something nice and catchy get the attention of the user something
@@ -78,37 +78,74 @@ export default function Home() {
         </div>
       </div>
       <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center">
-      <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+        <div className="flex flex-col-reverse sm:flex-row items-center">
+          
+          <div className="flex-shrink-0 w-full sm:w-1/2 mb-4 sm:mb-0">
+            <Image
+              src="/hero.png" 
+              alt="Description of the image"
+              width={400}
+              height={200}
+              quality={100}
+              className="rounded-md"
+            />
+          </div>
+
+          <div className="w-full sm:w-1/2">
+            <h2 className="text-3xl font-bold mb-4">Breaking Barriers, Building Opportunities</h2>
+            <p className="text-lg text-gray-700">
+            Saksham: Empowering Specially Abled Individuals is a groundbreaking initiative that aims to create a more inclusive society in India. We believe that everyone, regardless of their abilities, should have the opportunity to learn, communicate, and thrive. Through our programs and services, we provide support, resources, and empowerment to individuals with disabilities, enabling them to lead fulfilling lives.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center">
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Frequently Asked Questions
+        </h2>
 
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger>What is Saksham?</AccordionTrigger>
             <AccordionContent>
-            Saksham: Empowering Specially Abled Individuals is a groundbreaking initiative aimed at creating a more inclusive society in India where everyone, regardless of their abilities, has the opportunity to learn, communicate, and thrive.
+              Saksham: Empowering Specially Abled Individuals is a
+              groundbreaking initiative aimed at creating a more inclusive
+              society in India where everyone, regardless of their abilities,
+              has the opportunity to learn, communicate, and thrive.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>How can I contribute?</AccordionTrigger>
             <AccordionContent>
-              There are many ways you can contribute to Saksham: Empowering Specially Abled Individuals. You can volunteer your time, donate funds, or spread awareness about the initiative.
+              There are many ways you can contribute to Saksham: Empowering
+              Specially Abled Individuals. You can volunteer your time, donate
+              funds, or spread awareness about the initiative.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>Who can benefit from Saksham?</AccordionTrigger>
             <AccordionContent>
-              Saksham: Empowering Specially Abled Individuals is designed to benefit individuals with disabilities of all kinds. Our programs and resources are tailored to meet the unique needs of each individual.
+              Saksham: Empowering Specially Abled Individuals is designed to
+              benefit individuals with disabilities of all kinds. Our programs
+              and resources are tailored to meet the unique needs of each
+              individual.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
             <AccordionTrigger>How can i get involved?</AccordionTrigger>
             <AccordionContent>
-              Getting involved with Saksham: Empowering Specially Abled Individuals is easy. You can join our volunteer network, participate in fundraising events, or become a corporate partner.
+              Getting involved with Saksham: Empowering Specially Abled
+              Individuals is easy. You can join our volunteer network,
+              participate in fundraising events, or become a corporate partner.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
             <AccordionTrigger>Where is Saksham based?</AccordionTrigger>
             <AccordionContent>
-              Saksham: Empowering Specially Abled Individuals is based in Delhi, but our reach extends to individuals and communities across the country.
+              Saksham: Empowering Specially Abled Individuals is based in Delhi,
+              but our reach extends to individuals and communities across the
+              country.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
