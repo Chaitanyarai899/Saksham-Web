@@ -1,5 +1,12 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -69,6 +76,42 @@ export default function Home() {
             />
           </div>
         </div>
+      </div>
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center">
+      <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+
+        <Accordion type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>What is Saksham?</AccordionTrigger>
+            <AccordionContent>
+            Saksham: Empowering Specially Abled Individuals is a groundbreaking initiative aimed at creating a more inclusive society in India where everyone, regardless of their abilities, has the opportunity to learn, communicate, and thrive.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>How can I contribute?</AccordionTrigger>
+            <AccordionContent>
+              There are many ways you can contribute to Saksham: Empowering Specially Abled Individuals. You can volunteer your time, donate funds, or spread awareness about the initiative.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Who can benefit from Saksham?</AccordionTrigger>
+            <AccordionContent>
+              Saksham: Empowering Specially Abled Individuals is designed to benefit individuals with disabilities of all kinds. Our programs and resources are tailored to meet the unique needs of each individual.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-4">
+            <AccordionTrigger>How can i get involved?</AccordionTrigger>
+            <AccordionContent>
+              Getting involved with Saksham: Empowering Specially Abled Individuals is easy. You can join our volunteer network, participate in fundraising events, or become a corporate partner.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-5">
+            <AccordionTrigger>Where is Saksham based?</AccordionTrigger>
+            <AccordionContent>
+              Saksham: Empowering Specially Abled Individuals is based in Delhi, but our reach extends to individuals and communities across the country.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </>
   );
