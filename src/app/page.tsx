@@ -1,5 +1,7 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,6 +15,12 @@ export default function Home() {
             Something nice and catchy get the attention of the user something
             catchy and nice.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 mt-6">
+            <Link href="/kahi-jayenge" className={buttonVariants()}>
+              Get Started &rarr;
+            </Link>
+            <Button variant="ghost">Support our Cause</Button>
+          </div>
         </div>
       </MaxWidthWrapper>
 
