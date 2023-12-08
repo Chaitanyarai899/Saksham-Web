@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -8,9 +9,16 @@ const Navbar = () => {
     backdrop-blur-lg transition-all"
     >
       <MaxWidthWrapper>
-        <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-          <Link href="/" className="flex z-40 font-semibold">
-            <span>Saksham</span>
+        <div className="flex h-16 items-center justify-between ">
+          <Link href="/" className="flex z-40 ">
+           <Image
+                    src="/sakshamlogo1.png"
+                    alt="Preview of video call feature"
+                    width={200}
+                    height={40}
+                    quality={100}
+                    className="rounded-md"
+                  />
           </Link>
         </div>
       </MaxWidthWrapper>
