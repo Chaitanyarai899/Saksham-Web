@@ -3,9 +3,13 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils";
+import { auth, UserButton } from "@clerk/nextjs";
 
 
 const Navbar = () => {
+  const { userId } = auth();
+
+
   return (
     <nav
       className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 
@@ -24,16 +28,23 @@ const Navbar = () => {
                   />
           </Link>
         <div className="space-x-4" id="auth-box">
-          <Link href="/sign-in" className="font-mono">
-            <Button variant="ghost" className="border-rose-600 border-b-[4px] border-r-[4px] border-l-[2px] border-t-[2px] m-2 hover:border-r-[3px] hover:border-b-[3px] hover:bg-white">
-              Sign In
-            </Button>
-          </Link>
-          <Link href="/sign-up" className="font-mono">
-            <Button variant="outline" className="border-rose-600 border-b-[4px] border-r-[4px] border-l-[2px] border-t-[2px] m-2 hover:border-r-[3px] hover:border-b-[3px hover:bg-white">
-              Sign Up
-            </Button>
-          </Link>
+          {!userId && (
+            <>
+              <Link href="/sign-in" className="font-mono">
+                <Button variant="ghost" className="border-rose-600 border-b-[4px] border-r-[4px] border-l-[2px] border-t-[2px] m-2 hover:border-r-[3px] hover:border-b-[3px] hover:bg-white">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/sign-up" className="font-mono">
+                <Button variant="outline" className="border-rose-600 border-b-[4px] border-r-[4px] border-l-[2px] border-t-[2px] m-2 hover:border-r-[3px] hover:border-b-[3px hover:bg-white">
+                  Sign Up
+                </Button>
+              </Link>
+            </>
+          )}
+          <div className="ml-auto">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
         </div>
       </MaxWidthWrapper>
