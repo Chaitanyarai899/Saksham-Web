@@ -15,6 +15,44 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    screens: {
+      '2xl': {'max': '1535px'},
+      // => @media (max-width: 1535px) { ... }
+    
+      'xl': {'max': '1060px'},
+      // => @media (max-width: 1279px) { ... }
+
+      'lg': {'max': '1103px'},
+      // => @media (max-width: 1103px) { ... }
+      'xllg': {'max': '1146px'},
+
+      'xlg': {'max': '1243px'},
+
+      'mlg': {'max': '1052px'},
+      // => @media (max-width: 1103px) { ... }
+
+
+      'xmd': {'max': '960px'},
+
+      'md': {'max': '783px'},
+      
+      'vmd': {'min': '783px'},
+      // => @media (max-width: 767px) { ... }
+      'nm': {'max': '615px'},
+      'xnm':{'max':'886px'},
+
+      'sm': {'max': '515px'},
+      // => @media (max-width: 639px) { ... }
+      'xsml': {'max': '538px'},
+
+      'xsm': {'max': '460px'},
+      'xsms': {'max': '419px'},
+
+      'xssm': {'max': '395px'},
+      
+      'xsssm': {'max': '335px'},
+
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
