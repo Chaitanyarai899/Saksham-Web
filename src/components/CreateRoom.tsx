@@ -2,10 +2,12 @@
 import { FC, useContext, useEffect } from "react";
 import { buttonVariants } from "./ui/button";
 import { ws } from "@/lib/ws";
+import { useRouter } from "next/navigation";
 // import { RoomContext } from "@/context/RoomContext";
 
 const CreateRoom: FC = () => {
   // const { ws } = useContext(RoomContext);
+  const router = useRouter();
 
   const createRoom = () => {
     try {
@@ -16,10 +18,11 @@ const CreateRoom: FC = () => {
       console.log(error);
     }
   };
+  const enterRoom = ({ roomId }: { roomId: "string" }) => {
+    router.push(`/room/${roomId}`);
+  };
   useEffect(() => {
-    ws.on("room-created", (roomId: string) => {
-      console.log(roomId);
-    });
+    ws.on("room-created", enterRoom);
   }, []);
   return (
     <div className="flex flex-col">
