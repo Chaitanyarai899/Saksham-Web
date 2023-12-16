@@ -29,7 +29,11 @@ function Braille() {
   };
   const [inputValue, setInputValue] = useState('');
   const [outputValue, setOutputValue] = useState('');
-
+  const speak = (text : any) => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+  };
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value.toUpperCase();
     setInputValue(input);
@@ -40,6 +44,8 @@ function Braille() {
       if (brailleMap[inputValue]) {
         setOutputValue((prevValue) => prevValue + brailleMap[inputValue]);
         setInputValue('');
+        speak(brailleMap[inputValue]);
+
       }
     } else if (event.key === ' ') {
       event.preventDefault();
