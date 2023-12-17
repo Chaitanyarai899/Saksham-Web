@@ -1,0 +1,67 @@
+[
+    {
+        "character": "N",
+        "brailleCode": "1345",
+        "string": "SDFK"
+      },
+      {
+        "character": "O",
+        "brailleCode": "135",
+        "string": "SDK"
+      },
+      {
+        "character": "P",
+        "brailleCode": "1234",
+        "string": "SDFJ"
+      },
+      {
+        "character": "Q",
+        "brailleCode": "12345",
+        "string": "SDFKJ"
+      },
+      {
+        "character": "R",
+        "brailleCode": "1235",
+        "string": "SDFK"
+      },
+      {
+        "character": "S",
+        "brailleCode": "234",
+        "string": "DF"
+      },
+      {
+        "character": "T",
+        "brailleCode": "2345",
+        "string": "DFK"
+      },
+      {
+        "character": "U",
+        "brailleCode": "136",
+        "string": "SL"
+      },
+      {
+        "character": "V",
+        "brailleCode": "1236",
+        "string": "SDFL"
+      },
+      {
+        "character": "W",
+        "brailleCode": "2456",
+        "string": "SDJKL"
+      },
+      {
+        "character": "X",
+        "brailleCode": "1346",
+        "string": "SDFKL"
+      },
+      {
+        "character": "Y",
+        "brailleCode": "13456",
+        "string": "SDFKK"
+      },
+      {
+        "character": "Z",
+        "brailleCode": "1356",
+        "string": "SDKK"
+      }
+]
