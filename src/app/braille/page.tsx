@@ -76,9 +76,10 @@ function Braille() {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center border-4 border-rose-600 m-4 overflow-y rounded-lg bg-white/70'>
-      <div className='grid grid-cols-6'>
-        <div className='h-full col-span-3 overflow-y' id='braille-infobox'>
+    <div id='main-container' className='divide-y-[3px]  divide-gray-200'>
+    <div className=' justify-center border-4 border-rose-600 m-4 overflow-y rounded-lg bg-white/70'>
+      <div className='grid grid-cols-8'>
+        <div className='h-full col-span-4 overflow-y' id='braille-infobox'>
           <Table className="text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400 p-8 w-[95%] h-[90%] m-auto my-4 self-center">
             <TableCaption className="font-[#DE9495] text-left">Braille Script Data</TableCaption>
               <TableHeader className="divide-x-[2px] divide-black/20 text-md text-black dark:bg-gray-700 dark:text-gray-400">
@@ -99,7 +100,7 @@ function Braille() {
             </TableBody>
         </Table>
         </div>
-        <div className='h-full grid place-content-start m-4' id='input-box'>
+        <div className='h-full grid place-content-start m-4 col-span-4' id='input-box'>
           <label htmlFor='brailleInput' className='p-2 font-semibold tracking-wide'>
             Enter Braille Key :
           </label>
@@ -109,15 +110,47 @@ function Braille() {
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className='w-fit rounded-md border-4 border-black/20 mb-2 h-[20px]'
+            className='w-[32em] mt-3 rounded-md border-4 border-black/20'
           />
           {outputValue && (
-            <p className='font-bold text-xl text-stone-900/80 tracking-wider'>
-              Continuous Word : {outputValue}
+            <p className='font-bold text-xl text-stone-900/80 border-4 p-2 rounded-lg border-black tracking-wider mt-3'>
+              Continuous Word : <p className='inline px-4 rounded-lg py-1 text-rose-600 mx-2'>{outputValue}</p>
             </p>
           )}
         </div>
       </div>
+    </div>
+
+    <div className='mt-6 p-2' id='info-box'>
+            <h1 className='mt-2 text-2xl font-semibold text-center text-stone-900'>
+              What is Braille?
+            </h1>
+            <p className='px-4 py-2 text-center tracking-tight'>
+              Braille is a unique tactile writing system designed for individuals who are visually impaired or blind. It employs patterns of raised dots arranged in a rectangular grid to represent letters, numbers, and punctuation. Developed by Louis Braille in the 19th century, this system has become a cornerstone of literacy and independence for the blind community.
+            </p>
+            <h2 className='mt-2 text-xl font-semibold text-center text-stone-900'>Key Components</h2>
+            <ul className='list-disc mt-3 px-8 leading-7'>
+              <li>
+                <p className='font-bold inline'>Tactile Reading :</p> Braille facilitates reading through touch. Raised dots form characters, allowing individuals to feel and interpret written information using their fingers.
+              </li>
+              <li>
+                <p className='font-bold inline'>Standardization :</p> Braille is a standardized system, ensuring consistency and universal understanding across different languages and regions. It provides a common language for blind individuals.
+              </li>
+              <li>
+                <p className='font-bold inline'>Versatility :</p> Beyond the alphabet, braille represents numbers, punctuation, mathematical symbols, and musical notations. Its versatility makes it a comprehensive system for various applications.
+              </li>
+            </ul>
+            <h2 className='mt-2 text-xl font-semibold text-center text-stone-900'>Educational significance</h2>
+            <ul className='list-disc mt-3 px-8 leading-7'>
+              <li>
+                <p className='font-bold inline'>Educational Tool :</p> Braille is a crucial educational tool for blind students. It allows independent access to textbooks, educational materials, and written information, contributing to academic success.
+              </li>
+              <li>
+                <p className='font-bold inline'>Curriculum Inclusion :</p> Learning braille is often part of the curriculum for blind students, empowering them with essential literacy skills for effective communication.
+              </li>
+            </ul>
+    </div>
+
     </div>
   );
 }
