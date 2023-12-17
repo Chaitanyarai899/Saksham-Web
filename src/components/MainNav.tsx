@@ -11,10 +11,10 @@ function MainNav() {
        
         <div className="text-lg xsms:text-base p-2 font-mono xsssm:py-1 xsssm:text-sm  font-medium mlg:text-base">
           <ul className="flex flex-row justify-around">
-            <li className="px-3"> main </li>
-            <li className="px-3"> main </li>
-            <li className="px-3"> main </li>
-            <li className="px-3"> main </li>
+            <Link href="/home"><li className="px-3"> Home </li></Link>
+            <Link href="/schemes"><li className="px-3"> Schemes </li></Link>
+           <Link href="/braille/orbitwriter"><li className="px-3"> Orbit-Writer </li></Link> 
+            <li className="px-3"> Join Us </li>
 
             <li className="px-3"> main </li>
 

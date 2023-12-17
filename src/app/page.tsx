@@ -24,7 +24,7 @@ export default function Home() {
             catchy and nice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Link href="/auth" className={buttonVariants()}>
+            <Link href="/home" className={buttonVariants()}>
               Get Started &rarr;
             </Link>
             <Button variant="ghost">Support our Cause</Button>

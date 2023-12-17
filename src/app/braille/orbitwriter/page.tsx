@@ -90,11 +90,15 @@ function Braille() {
       event.preventDefault();
       setOutputValue((prevValue) => prevValue.trim() + " ");
       speak("space");
-    } else if (event.key === "Backspace") {
+    } else if (event.key === "Backspace" ) {
       // Remove the last character from outputValue
       setOutputValue((prevValue) => prevValue.slice(0, -1));
-      speak("Delete");
     }
+    else if (event.key.toLowerCase() === "control") {
+      // Remove the last character from outputValue
+      setInputValue("");
+    }
+  
   };
 
   return (
