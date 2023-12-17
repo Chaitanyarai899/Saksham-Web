@@ -2,6 +2,7 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import VideoPlayer from "@/components/VideoPlayer";
 import { RoomContext } from "@/context/RoomContext";
+import { PeerState } from "@/context/peerReducer";
 import React, { useContext, useEffect, useState } from "react";
 
 type Props = {
@@ -12,37 +13,21 @@ type Props = {
 
 function page({ params: { slug } }: Props) {
   const id = slug;
-  const { ws, me } = useContext(RoomContext);
-  const [stream, setStream] = useState<MediaStream>();
+  const { ws, me, stream, peers } = useContext(RoomContext);
 
-  const getUsers = ({
-    roomId,
-    participants,
-  }: {
-    roomId: string;
-    participants: string[];
-  }) => {
-    console.log({ roomId, participants });
-  };
   useEffect(() => {
-    try {
-      navigator.mediaDevices
-        .getUserMedia({ video: true, audio: true })
-        .then((stream) => {
-          setStream(stream);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-
     if (me) ws.emit("join-room", { roomId: id, peerId: me._id });
-    ws.on("get-users", getUsers);
   }, [id, me, ws]);
   return (
     <>
       <MaxWidthWrapper>
         Room id {id}
-        <div>{stream && <VideoPlayer stream={stream} />}</div>
+        <div className="grid grid-cols-2 gap-2">
+          {Object.values(peers as PeerState).map((peer, index) => (
+            <VideoPlayer key={index} stream={peer.stream} />
+          ))}
+          {stream && <VideoPlayer stream={stream} />}
+        </div>
       </MaxWidthWrapper>
     </>
   );
