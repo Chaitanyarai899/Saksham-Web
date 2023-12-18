@@ -72,7 +72,7 @@ const Navbar = () => {
             )}
             <div className="flex-row">
               {userId && (
-                <div className="pt-1 pr-[23vw]">
+                <div className="pt-1 pr-[24vw]">
                   <MainNav />
                 </div>
               )}
