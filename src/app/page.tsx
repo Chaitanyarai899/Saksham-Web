@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center py-5">
-        <div className="flex flex-col-reverse sm:flex-row items-center">
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
           <div className="flex-shrink-0 w-full sm:w-1/2 mb-4 sm:mb-0">
             <Image
               src="/hero.png"
@@ -91,11 +91,11 @@ export default function Home() {
             />
           </div>
 
-          <div className="w-full sm:w-1/2">
-            <h2 className="text-3xl font-bold mb-4 text-right">
+          <div className="w-full sm:w-1/2 flex flex-col items-center justify-center">
+            <h2 className="text-3xl font-bold mb-4">
               Breaking Barriers, Building Opportunities
             </h2>
-            <p className="text-lg text-gray-700 text-right">
+            <p className="text-lg text-gray-700">
               Saksham: Empowering Specially Abled Individuals is a
               groundbreaking initiative that aims to create a more inclusive
               society in India. We believe that everyone, regardless of their
@@ -113,23 +113,20 @@ export default function Home() {
           Our Mission & Vision
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
           <h2 className="text-2xl font-bold mb-4 text-left">
             Empowering Specially Abled Individuals with Accessible Education,
             Community Support, and Skill Development
           </h2>
-         
-            <p className="text-sm text-gray-500 text-left">
-              At Saksham, we are dedicated to building a society that is more
-              inclusive by offering accessible education, community support, and
-              skill development opportunities to people with disabilities. Our
-              goal is to enable individuals of varying abilities to acquire
-              knowledge, communicate effectively, and succeed.
-            </p>
-         
+
+          <p className="text-sm text-gray-500 text-left">
+            At Saksham, we are dedicated to building a society that is more
+            inclusive by offering accessible education, community support, and
+            skill development opportunities to people with disabilities. Our
+            goal is to enable individuals of varying abilities to acquire
+            knowledge, communicate effectively, and succeed.
+          </p>
         </div>
 
-       
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-10">
           <div>
             <p className="text-lg font-bold mb-2 text-left">
