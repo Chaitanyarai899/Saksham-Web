@@ -18,84 +18,140 @@ function learn() {
     <>
       <div className="p-2 flex flex-row h-[60vh] mb-20">
         <div className="w-[50%]">
-         <div className="py-auto px-auto my-auto flex flex-col ">
-            <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">Enspire. Empower.
-            <div className="my-2">
-            Educate.
+          <div className="py-auto px-auto my-auto flex flex-col ">
+            <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">
+              Enspire. Empower.
+              <div className="my-2">Educate.</div>
+              <div className="font-normal mt-3 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
+                It's not about being Disabled,
+              </div>
+              <div className="font-normal mt-1 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
+                It's about being सaksham
+              </div>
             </div>
-            <div className="font-normal mt-3 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
-            It's not about being Disabled,
-            </div>
-            <div  className="font-normal mt-1 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
-            It's about being सaksham
-            </div>
-            </div>
-          
           </div>
-      
         </div>
         <div className="w-[50%]">
           <div className="flex flex-row justify-center my-13">
-
             <div className="flex flex-col">
-            <Image
-                  src="/diasbledpeople.png"
-                  alt="Preview of video call feature"
-                  width={250}
-                  height={30}
-                  quality={100}
-                  className="rounded-md items-center "
-                />
-                 <Image
-                  src="/handsignwomen.png"
-                  alt="Preview of video call feature"
-                  width={200}
-                  height={100}
-                  quality={100}
-                  className="rounded-md mx-auto items-center "
-                />
-
+              <Image
+                src="/diasbledpeople.png"
+                alt="Preview of video call feature"
+                width={250}
+                height={30}
+                quality={100}
+                className="rounded-md   items-center "
+              />
+              <Image
+                src="/handsignwomen.png"
+                alt="Preview of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
             </div>
             <div className="flex flex-col m-5">
-            <Image
-                  src="/empower.png"
-                  alt="Preiew of video call feature"
-                  width={200}
-                  height={100}
-                  quality={100}
-                  className="rounded-md mx-auto items-center "
-                />
-                 <Image
-                  src="/enspire.png"
-                  alt="Preview of video call feature"
-                  width={200}
-                  height={100}
-                  quality={100}
-                  className="rounded-md mx-auto items-center "
-                />
-                 <Image
-                  src="/educate.png"
-                  alt="Preview of video call feature"
-                  width={200}
-                  height={100}
-                  quality={100}
-                  className="rounded-md mx-auto items-center "
-                />
-            </div><div className="flex flex-col">
+              <Image
+                src="/empower.png"
+                alt="Preiew of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+              <Image
+                src="/enspire.png"
+                alt="Preview of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+              <Image
+                src="/educate.png"
+                alt="Preview of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+            </div>
+            <div className="flex flex-col"></div>
+          </div>
+        </div>
+      </div>
+      <div className=" mt-10 h-5 ">
+        <div className="w-[70%] rounded-2xl mx-auto bg-[#e6e6e6]">
+          <div className=" flex flex-row p-4">
+            <div className="p-1">
+              <div className="text-4xl font-semibold mt-9  ml-3 pr-[6vw]">
+                Learn Beyond{" "}
+              </div>
 
+              <div className="text-4xl font-semibold  ml-3 mr-10">
+                any Restriction
+              </div>
+              <div className="text-xl font-normal pr-5 mt-6  ml-2 ">
+                We Provide you with the Tools you need and the benefits you
+                deserve !
+              </div>
+              <div className="flex flex-row">
+                <Button className="bg-transparent mt-5 text-black mr-1 rounded-3xl w-fit border border-black">
+                  <Image
+                    src="https://cdn.iconscout.com/icon/premium/png-512-thumb/mentor-1-499019.png?f=webp&w=256"
+                    alt="Preview of video call feature"
+                    width={40}
+                    height={100}
+                    quality={100}
+                    className="rounded-3xl p-1 mr-2   "
+                  />
+                  Get a Mentor
+                </Button>
+                <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
+                  <Image
+                    src="https://cdn.iconscout.com/icon/premium/png-512-thumb/about-us-2840081-2359589.png?f=webp&w=256"
+                    alt="Preview of video call feature"
+                    width={40}
+                    height={100}
+                    quality={100}
+                    className="rounded-3xl p-1 mr-2   "
+                  />
+                  About us
+                </Button>
+              </div>
+              <Button className="bg-transparent my-3 text-black rounded-3xl w-[16vw] border border-black">
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/investment-idea-1554251-1317258.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={40}
+                  height={100}
+                  quality={100}
+                  className="rounded-3xl p-1 mr-2   "
+                />
+                About us Support us
+              </Button>
+            </div>
+            <div className="p-1">
+              <Image
+                src="/educated.png"
+                alt="Preview of video call feature"
+                width={380}
+                height={100}
+                quality={100}
+                className="rounded-3xl mr-[1vw] items-center "
+              />{" "}
             </div>
           </div>
         </div>
       </div>
-      <div className="p-2 ">
-        <div className="flex flex-col justify-center mt-8">
+      <div className="flex flex-col justify-center mt-[69vh]">
           <div className="font-semibold font-mono tracking-wide text-4xl text-center  drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)] my-auto">
-            It's not just about being Abled{" "}
-          </div>
-          <div className="font-semibold font-mono text-4xl mt-4 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)] text-center my-auto">
-            It's about being सaksham
+            The Features are Endless !!{" "}
           </div>
         </div>
+
+      <div className="p-2 ">
         <div className="m-10 flex flex-row flex-wrap justify-center mx-auto ">
           <Card className="w-[21vw] m-4  ">
             <CardHeader>
@@ -228,42 +284,42 @@ function learn() {
           </Card>
         </div>
         <MaxWidthWrapper>
-        <div className="text-center my-16">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Personalized Mentor Support
-          </h2>
-          <p className="mt-2 text-lg text-gray-500">
-            Select a mentor from a pool of mentors, experts & get 1-on-1
-            mentorship!
-          </p>
-        </div>
-        <div className="mt-8 flex flex-col justify-between sm:flex-row sm:justify-center">
-          <div className="w-full px-16 flex flex-row justify-between sm:max-w-md">
-            <Link
-              className={cn(
-                buttonVariants(),
-                "flex flex-row justify-center gap-2"
-              )}
-              href="/search-mentor"
-            >
-              <span className="">
-                <Search className="h-4 w-4" />
-              </span>{" "}
-              Find A Mentor
-            </Link>
-            <Button variant="ghost" className="border border-rose-600">
-              Become A Mentor
-            </Button>
+          <div className="text-center my-16">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Personalized Mentor Support
+            </h2>
+            <p className="mt-2 text-lg text-gray-500">
+              Select a mentor from a pool of mentors, experts & get 1-on-1
+              mentorship!
+            </p>
           </div>
-          <Image
-            src="https://d8it4huxumps7.cloudfront.net/uploads/images/657998c6eb87f_frame_1000013453_2.png?d=2360x672"
-            alt="mentor"
-            width={1230}
-            height={400}
-            className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] mx-10"
-          />
-        </div>
-      </MaxWidthWrapper>
+          <div className="mt-8 flex flex-col justify-between sm:flex-row sm:justify-center">
+            <div className="w-full px-16 flex flex-row justify-between sm:max-w-md">
+              <Link
+                className={cn(
+                  buttonVariants(),
+                  "flex flex-row justify-center gap-2"
+                )}
+                href="/search-mentor"
+              >
+                <span className="">
+                  <Search className="h-4 w-4" />
+                </span>{" "}
+                Find A Mentor
+              </Link>
+              <Button variant="ghost" className="border border-rose-600">
+                Become A Mentor
+              </Button>
+            </div>
+            <Image
+              src="https://d8it4huxumps7.cloudfront.net/uploads/images/657998c6eb87f_frame_1000013453_2.png?d=2360x672"
+              alt="mentor"
+              width={1230}
+              height={400}
+              className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] mx-10"
+            />
+          </div>
+        </MaxWidthWrapper>
       </div>
     </>
   );
