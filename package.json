@@ -28,7 +28,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@clerk/nextjs": "^4.27.5",
+    "@clerk/nextjs": "^4.28.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
