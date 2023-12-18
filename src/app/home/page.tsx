@@ -169,7 +169,7 @@ function learn() {
               <CardDescription className="py-2 ">
                 {" "}
                 <span className="font-semibold text-black text-lg ">
-                  Alphabets : The first Letters
+                  Start With The Basics
                 </span>
               </CardDescription>
             </CardHeader>
@@ -190,7 +190,7 @@ function learn() {
               <CardDescription className="py-2">
                 {" "}
                 <span className="font-semibold text-black text-lg ">
-                  Numbers : The first numbers
+                  Digital Orbit Writer
                 </span>
               </CardDescription>
             </CardHeader>
@@ -211,7 +211,7 @@ function learn() {
               <CardDescription className="py-2">
                 {" "}
                 <span className="font-semibold text-black text-lg ">
-                  Objects : The first Objects
+                  Government Schemes
                 </span>
               </CardDescription>
             </CardHeader>
@@ -234,7 +234,7 @@ function learn() {
               <CardDescription className="py-2">
                 {" "}
                 <span className="font-semibold text-black text-lg ">
-                  Emotions : the Emotions
+                  Online Sign Language Practice
                 </span>
               </CardDescription>
             </CardHeader>
@@ -255,7 +255,7 @@ function learn() {
               <CardDescription className="py-2">
                 {" "}
                 <span className="font-semibold text-black text-lg ">
-                  Days : The first Letters
+                  Book A Mentoring Session
                 </span>
               </CardDescription>
             </CardHeader>
