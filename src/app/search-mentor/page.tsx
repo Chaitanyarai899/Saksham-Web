@@ -54,8 +54,8 @@ const Page = () => {
                         type="text"
                         onChange={handleInputChange}
                         value={inputValue}
-                        placeholder="Find A Mentor"
-                        className="w-full mt-3 p-4 rounded-md border-4 border-black/20"
+                        placeholder="Find A Mentor &#xf002"
+                        className="w-full mt-3 p-4 fa rounded-md border-4 border-black/20"
                     />
                 </div>
                 {/* Table */}

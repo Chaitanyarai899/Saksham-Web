@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,11 +10,71 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button, buttonVariants } from "@/components/ui/button";
+
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Button, buttonVariants } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { cn } from "@/lib/utils";
+
+const formSchema = z.object({
+  username: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+  phone: z.number().min(10, {
+    message: "Your phone number must contain 10 digits"
+  }),
+  email: z.string().email({
+    message: "Enter a Valid Email",
+  }),
+  expertise: z.string().min(1, {
+    message: "Enter an Expertise",
+  }),
+});
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values)
+  }
+
+
 function learn() {
+
+    const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      phone: null,
+      email: "",
+      expertise: "",
+    },
+  })
+
   return (
     <>
       <div className="p-2 flex flex-row h-[60vh] mb-20">
@@ -250,10 +311,84 @@ function learn() {
                 <Search className="h-4 w-4" />
               </span>{" "}
               Find A Mentor
-            </Link>
-            <Button variant="ghost" className="border border-rose-600">
-              Become A Mentor
-            </Button>
+            </Link>         
+              {/* <Button variant="ghost" className="border border-rose-600">
+                Become A Mentor
+              </Button> */}
+
+              <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="ghost" className="border border-rose-600">Become A mentor</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Become A Mentor Today</AlertDialogTitle>
+                  <AlertDialogDescription>
+                   <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="text-left space-y-8">
+                      <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter Your Name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter Your Phone Number" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter Your Email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="expertise"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Expertise</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter Your Expertise" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <Button className="w-full" type="submit">Submit</Button>
+                    </form>
+                  </Form>
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+
           </div>
           <Image
             src="https://d8it4huxumps7.cloudfront.net/uploads/images/657998c6eb87f_frame_1000013453_2.png?d=2360x672"
