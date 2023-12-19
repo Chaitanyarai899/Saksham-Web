@@ -8,9 +8,41 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from 'next/link';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 const education = () => {
   return (
+    <div>
+        <div className='text-gray-800 m-4 p-8 divide-black'>
+            <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                Yes. It adheres to the WAI-ARIA design pattern.
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionContent>
+                Yes. It comes with default styles that matches the other
+                components&apos; aesthetic.
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionContent>
+                Yes. It&apos;s animated by default, but you can disable it if you
+                prefer.
+                </AccordionContent>
+            </AccordionItem>
+            </Accordion>
+        </div>
+
     <ol className="relative p-4 m-8 border-s border-gray-900 dark:border-gray-700">
       <li className="mb-10 ms-4">
         <div className="absolute w-3 h-3 bg-gray-900 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
@@ -140,6 +172,8 @@ const education = () => {
                     </p>
       </li>
     </ol>
+    </div>
+    
   );
 };
 
