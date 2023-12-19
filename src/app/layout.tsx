@@ -26,6 +26,7 @@ export default function RootLayout({
             "relative h-full font-sans antialiased grainy",
             inter.className
           )}
+          suppressHydrationWarning
         >
           <main className="relative flex flex-col min-h-screen">
             <Navbar />
