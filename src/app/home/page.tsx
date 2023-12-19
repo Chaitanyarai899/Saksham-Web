@@ -148,15 +148,16 @@ function learn() {
           </div>
         </div>
       </div>
+    
       <div className="p-2 ">
         <div className="flex flex-col justify-center mt-8">
-          <div className="font-semibold font-mono tracking-wide text-4xl text-center  drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)] my-auto">
-            It's not just about being Abled{" "}
+          <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
+          A bend in the road is not the end of the road. Unless you fail to make the turn.{" "}
           </div>
-          <div className="font-semibold font-mono text-4xl mt-4 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)] text-center my-auto">
-            It's about being सaksham
-          </div>
+          <div className="font-normal font-mono text-xl mt-1  text-center my-auto">
+           - Hellen Keller - </div>
         </div>
+        
         <div className="m-10 flex flex-row flex-wrap justify-center mx-auto ">
           <Card className="w-[21vw] m-4  ">
             <CardHeader>
@@ -222,6 +223,7 @@ function learn() {
             </CardHeader>
           </Card>
         </div>
+
         <div className="m-10 flex flex-row flex-wrap justify-center mx-auto ">
           <Card className="w-[21vw] m-4 ">
             <CardHeader>
@@ -298,6 +300,7 @@ function learn() {
             mentorship!
           </p>
         </div>
+        
         <div className="mt-8 flex flex-col justify-between sm:flex-row sm:justify-center">
           <div className="w-full px-16 flex flex-row justify-between sm:max-w-md">
             <Link

@@ -63,9 +63,9 @@ const Page = () => {
                     <Table className="text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400 p-8 w-[95%] h-[90%] m-auto my-4 self-center">
                         <TableHeader className="divide-x-[2px] divide-black/20 text-md text-black dark:bg-gray-700 dark:text-gray-400">
                             <TableRow className="px-6 py-3 font-semibold text-md text-stone-900">
-                                <TableHead className="w-[100px]">Character</TableHead>
-                                <TableHead>Braille</TableHead>
-                                <TableHead>String</TableHead>
+                                <TableHead className="w-[100px]">Name</TableHead>
+                                <TableHead>Email</TableHead>
+                                <TableHead>Expetise</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody className="divide-y-[1px] divide-black/20">
