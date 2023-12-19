@@ -14,8 +14,37 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import jsPDF from 'jspdf';
-
+import { Check, ChevronsUpDown } from "lucide-react"
+ 
+import { cn } from "@/lib/utils"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+ 
+const frameworks = [
+  {
+    value: "english",
+    label: "english",
+  },
+  {
+    value: "hindi",
+    label: "hindi",
+  },
+  
+]
 function Braille() {
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState("english")
+
   interface BrailleItem {
     character: string;
     brailleCode: string;
@@ -51,6 +80,53 @@ function Braille() {
     SDFKK: "Y",
     SDKK: "Z",
   };
+  const brailleMapHindi: Record<string, string> =   {
+    "S": "अ",
+    "DJ": "इ",
+    "FK": "ई",
+    "SFL": "उ",
+    "SK": "ए",
+    "FJ": "ऐ",
+    "SFJ": "ओ",
+    "DJL": "औ",
+    "SF": "क",
+    "K": "क़",
+    "DJFKL": "ख",
+    "DJFKJ": "ख़",
+    "SDKL": "घ",
+    "FJL": "ङ",
+    "SJ": "च",
+    "SKL": "छ",
+    "DKFJ": "ज",
+    "SFJKL": "ज़",
+    "FJKL": "झ",
+    "DK": "ञ",
+    "DFJKL": "ट",
+    "DKFJL": "ठ",
+    "DJFJL": "ड",
+    "SDFJKL": "ढ",
+    "DFJK": "त",
+    "SJFJL": "थ",
+    "SJK": "द",
+    "DFJL": "ध",
+    "SFJK": "न",
+    "SDFJ": "प",
+    "DFK": "फ",
+    "DJF": "फ़",
+    "SD": "ब",
+    "JK": "भ",
+    "SDFK": "र",
+    "SDF": "ल",
+    "SDFJL": "व",
+    "SJKL": "श",
+    "SDK": "ह",
+    "SDFJK": "ॐ",
+    "SDFJKLI": "त्र",
+    "SKLJ": "क्ष",
+    "DJFJKL": "ड़",
+    "D": "ऽ",
+    "J": "्"
+  } 
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("");
 
@@ -80,11 +156,17 @@ function Braille() {
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if(value == "english"){
+      var a = brailleMap[inputValue]
+    }
+    else{
+      var a = brailleMapHindi[inputValue]
+    }
     if (event.key === "Enter") {
-      if (brailleMap[inputValue]) {
-        setOutputValue((prevValue) => prevValue + brailleMap[inputValue]);
+      if (a) {
+        setOutputValue((prevValue) => prevValue + a);
         setInputValue("");
-        speak(brailleMap[inputValue]);
+        speak(a);
       }
     } else if (event.key === " ") {
       event.preventDefault();
@@ -101,38 +183,9 @@ function Braille() {
   
   };
 
+
   return (
     <div id="main-container" className="divide-y-[3px]  divide-gray-200">
-      {/* <div className='mt-1 p-2' id='info-box'>
-            <h1 className='mt-2 text-2xl font-semibold text-center text-stone-900'>
-              What is Braille?
-            </h1>
-            <p className='px-4 py-2 text-center tracking-tight'>
-              Braille is a unique tactile writing system designed for individuals who are visually impaired or blind. It employs patterns of raised dots arranged in a rectangular grid to represent letters, numbers, and punctuation. Developed by Louis Braille in the 19th century, this system has become a cornerstone of literacy and independence for the blind community.
-            </p>
-            <h2 className='mt-2 text-xl font-semibold text-center text-stone-900'>Key Components</h2>
-            <ul className='list-disc mt-3 px-8 leading-7'>
-              <li>
-                <p className='font-bold inline'>Tactile Reading :</p> Braille facilitates reading through touch. Raised dots form characters, allowing individuals to feel and interpret written information using their fingers.
-              </li>
-              <li>
-                <p className='font-bold inline'>Standardization :</p> Braille is a standardized system, ensuring consistency and universal understanding across different languages and regions. It provides a common language for blind individuals.
-              </li>
-              <li>
-                <p className='font-bold inline'>Versatility :</p> Beyond the alphabet, braille represents numbers, punctuation, mathematical symbols, and musical notations. Its versatility makes it a comprehensive system for various applications.
-              </li>
-            </ul> */}
-      {/* <h2 className='mt-2 text-xl font-semibold text-center text-stone-900'>Educational significance</h2> */}
-      {/* <ul className='list-disc mt-3 px-8 leading-7'>
-              <li>
-                <p className='font-bold inline'>Educational Tool :</p> Braille is a crucial educational tool for blind students. It allows independent access to textbooks, educational materials, and written information, contributing to academic success.
-              </li>
-              <li>
-                <p className='font-bold inline'>Curriculum Inclusion :</p> Learning braille is often part of the curriculum for blind students, empowering them with essential literacy skills for effective communication.
-              </li>
-            </ul> */}
-      {/* </div> */}
-
       <div className=" mt-4  flex flex-row justify-center">
         <p className="text-2xl font-semibold font-serif">Online Orbit Writer</p>
       </div>
@@ -142,18 +195,58 @@ function Braille() {
         id="input-box"
       >
       
+      
         <label
           htmlFor="brailleInput"
           className="p-2 font-semibold tracking-wide"
         >
-          Enter Braille Key :
+          Enter Braille Key : <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-[200px] justify-between"
+        >
+          {value
+            ? frameworks.find((framework) => framework.value === value)?.label
+            : value}
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-[200px] p-0">
+        <Command>
+          
+          <CommandGroup>
+            {frameworks.map((framework) => (
+              <CommandItem
+                key={framework.value}
+                value={framework.value}
+                onSelect={(currentValue) => {
+                  setValue(currentValue === value ? "" : currentValue)
+                  setOpen(false)
+                }}
+              >
+                <Check
+                  className={cn(
+                    "mr-2 h-4 w-4",
+                    value === framework.value ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                {framework.label}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </Command>
+      </PopoverContent>
+    </Popover>
         </label>
         <input
           id="brailleInput"
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
+          onKeyDown= {handleKeyDown}
           className="w-[32em] mt-3 p-4 rounded-md border-4 border-black/20"
         />
         {outputValue && (
@@ -178,7 +271,7 @@ function Braille() {
               Download as .pdf
             </Button>
               </div>
-           
+      
           </div>
         )}
       </div>
