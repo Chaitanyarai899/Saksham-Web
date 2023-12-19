@@ -2,6 +2,20 @@
 import React ,{ useState, ChangeEvent, KeyboardEvent, useEffect }  from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Check, ChevronsUpDown } from "lucide-react"
+ 
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import useEffectOnce from 'use-effect-once';
 import {
   Card,
@@ -11,7 +25,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
+const frameworks = [
+  {
+    value: "english",
+    label: "english",
+  },
+  {
+    value: "hindi",
+    label: "hindi",
+  },
+  
+]
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -103,17 +127,20 @@ function learn() {
     //     }
     //     synth.speak(utterance);
     //   };
-
+var value ="";
     useOnceCall(() => {
 
       const speak = (text: any) => {
         console.log("speaking");
         const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance(text);
+
       
          
         
         synth.speak(utterance);
+        localStorage.setItem("lang", "english");
+        localStorage.getItem("lang");
       };
       const speakhindi = (text: any) => {
         console.log("speaking");
@@ -135,7 +162,8 @@ function learn() {
       
     
     });
-  
+    const [open, setOpen] = React.useState(false)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -168,6 +196,48 @@ function learn() {
               </div>
               <div className="font-normal mt-1 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
                 It's about being सaksham
+              </div>
+              <div>
+              <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-[200px] justify-between"
+        >
+          {value
+            ? frameworks.find((framework) => framework.value === value)?.label
+            : value}
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-[200px] p-0">
+        <Command>
+          
+          <CommandGroup>
+            {frameworks.map((framework) => (
+              <CommandItem
+                key={framework.value}
+                value={framework.value}
+                onSelect={(currentValue) => {
+                  localStorage.setItem('lang', currentValue === value ? '' : currentValue);
+                  setOpen(false)
+                }}
+              >
+                <Check
+                  className={cn(
+                    "mr-2 h-4 w-4",
+                    value === framework.value ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                {framework.label}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </Command>
+      </PopoverContent>
+    </Popover>
               </div>
             </div>
           </div>
