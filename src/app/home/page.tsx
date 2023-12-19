@@ -150,7 +150,7 @@ function learn() {
       </div>
     
       <div className="p-2 ">
-        <div className="flex flex-col justify-center mt-8">
+        <div className="flex flex-col items-center justify-center mt-8">
           <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
           A bend in the road is not the end of the road. Unless you fail to make the turn.{" "}
           </div>
@@ -398,7 +398,7 @@ function learn() {
             alt="mentor"
             width={1230}
             height={400}
-            className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] mx-10"
+            className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         </div>
       </MaxWidthWrapper>
