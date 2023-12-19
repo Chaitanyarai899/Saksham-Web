@@ -50,8 +50,7 @@ const education = () => {
             </DropdownMenuTrigger>
         </DropdownMenu>
         <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-        A parent should learn sign language to enhance communication and foster a stronger connection with their specially-abled child, promoting inclusivity and understanding of their unique needs and experiences.
-        </p>
+        Embark on your signing journey, from A to Z, mastering the beautiful language of signs effortlessly, paving the way to fluent communication.        </p>
       </li>
            <li className="mb-10 ms-4">
         <div className="absolute w-3 h-3 bg-gray-900 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
@@ -91,8 +90,7 @@ const education = () => {
             </DropdownMenuTrigger>
         </DropdownMenu>
         <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-        A parent should learn sign language to enhance communication and foster a stronger connection with their specially-abled child, promoting inclusivity and understanding of their unique needs and experiences.
-        </p>
+        unlocking basic sign language words—a roadmap paving the way to fluent expression in graceful, silent conversation.        </p>
       </li>
         <li className="mb-10 ms-4">
         <div className="absolute w-3 h-3 bg-gray-900 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
@@ -117,6 +115,29 @@ const education = () => {
         <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
         A parent should learn sign language to enhance communication and foster a stronger connection with their specially-abled child, promoting inclusivity and understanding of their unique needs and experiences.
         </p>
+      </li>
+      <li className="mb-10 ms-4">
+        <div className="absolute w-3 h-3 bg-gray-900 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+        <DropdownMenu>
+            <DropdownMenuTrigger>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Dont't Hesitate , it's a language                </h3>
+            <DropdownMenuContent>
+                <DropdownMenuItem className='space-x-4'>
+                    <div className='flex flex-col px-4 mx-auto content-center'>
+                        <img src="https://www.lifewire.com/thmb/hDBos5-KEGNUi-4iJgbEDgdKikM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/sign-language-numbers-letters-lifeprint-7e6dac833d4e44deb202b7b269cdd7e6.png"
+                        width={250}
+                        height={200}
+                        alt="" />
+                        <Link href="https://www.signingsavvy.com/sign/PRACTICE/335/1" className='p-4 border-2 my-2 text-center border-black'>Practice Here</Link>
+                    </div>
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+            </DropdownMenuTrigger>
+        </DropdownMenu>
+        <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+        Learning sign language opens hearts, stitching inclusivity through our efforts, making everyone feel seen. Embrace the chance; our small steps weave a sense of belonging, erasing hesitation and fostering unity.
+                    </p>
       </li>
     </ol>
   );

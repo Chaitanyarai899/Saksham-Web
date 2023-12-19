@@ -16,6 +16,9 @@ import {
 
 const Page = () => {
     const [inputValue, setInputValue] = useState<string>("");
+    //  const [schemes, setSchemes] = useState<Scheme[]>([]);
+  
+ 
     
     interface BrailleItem {
         character: string;
@@ -27,6 +30,21 @@ const Page = () => {
     useEffect(() => {
         setTableData(brailleData);
     }, []);
+    
+    // useEffect(() => {
+    //     // Fetch data when the component mounts
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get('http://localhost:5000/api/mentor');
+    //             setTableData(response.data); // Assuming response.data is an array of BrailleItem
+    //             setFilteredTableData(response.data); // Initialize filtered data with fetched data
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+
+    //     fetchData(); // Call the fetch function
+    // }, []);
 
     const [filteredTableData, setFilteredTableData] = useState<BrailleItem[]>([]);
 
