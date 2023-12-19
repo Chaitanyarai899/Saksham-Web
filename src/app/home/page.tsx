@@ -148,14 +148,83 @@ function learn() {
           </div>
         </div>
       </div>
-    
-      <div className="p-2 ">
-        <div className="flex flex-col justify-center mt-8">
-          <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
-          A bend in the road is not the end of the road. Unless you fail to make the turn.{" "}
+
+      <div className="h-5 ">
+        <div className="w-fit rounded-2xl mx-auto bg-[#e6e6e6]">
+          <div className=" flex flex-row p-4">
+            <div className="p-1 ">
+              <div className="text-4xl font-semibold mt-9  ml-3 pr-[6vw]">
+                Learn Beyond{" "}
+              </div>
+
+              <div className="text-4xl font-semibold  ml-3 mr-10">
+                any Restriction
+              </div>
+              <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
+                We Provide you with the Tools you need and the benefits you
+                deserve !
+              </div>
+              <div className="text-xl font-normal mr-10 mt-1 ml-2 ">
+                To facilitate inclusions and make everyone Saksham.
+              </div>
+              
+              <div className="flex flex-row mt-7">
+                <Button className="bg-transparent mt-5 text-black mr-1 rounded-3xl w-fit border border-black">
+                  <Image
+                    src="https://cdn.iconscout.com/icon/premium/png-512-thumb/mentor-1-499019.png?f=webp&w=256"
+                    alt="Preview of video call feature"
+                    width={40}
+                    height={100}
+                    quality={100}
+                    className="rounded-3xl p-1 mr-2   "
+                  />
+                  Get a Mentor
+                </Button>
+                <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
+                  <Image
+                    src="https://cdn.iconscout.com/icon/premium/png-512-thumb/about-us-2840081-2359589.png?f=webp&w=256"
+                    alt="Preview of video call feature"
+                    width={40}
+                    height={100}
+                    quality={100}
+                    className="rounded-3xl p-1 mr-2   "
+                  />
+                  About us
+                </Button>
+              </div>
+              <Button className="bg-transparent my-3 text-black rounded-3xl w-fit px-4 border border-black">
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/investment-idea-1554251-1317258.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={40}
+                  height={100}
+                  quality={100}
+                  className="rounded-3xl p-1 mr-2   "
+                />
+               Support us
+              </Button>
+            </div>
+            <div className="p-1">
+              <Image
+                src="/educated.png"
+                alt="Preview of video call feature"
+                width={380}
+                height={100}
+                quality={100}
+                className="rounded-3xl mr-[1vw] items-center "
+              />{" "}
+            </div>
           </div>
-          <div className="font-normal font-mono text-xl mt-1  text-center my-auto">
-           - Hellen Keller - </div>
+        </div>
+      </div>
+    
+      <div className="p-2 mt-[68vh] ">
+        <div className="flex flex-col justify-center mt-2">
+          <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
+        The Features are endless,{" "}
+          </div>
+          <div className="font-normal font-semibold text-xl mt-1  text-center my-auto">
+          So are the opportunities </div>
         </div>
         
         <div className="m-10 flex flex-row flex-wrap justify-center mx-auto ">
