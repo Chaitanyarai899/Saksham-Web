@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import ReactTypingEffect from "react-typing-effect";
@@ -11,15 +12,51 @@ function MainNav() {
        
         <div className="text-lg xsms:text-base p-2 font-mono xsssm:py-1 xsssm:text-sm  font-medium mlg:text-base">
           <ul className="flex flex-row justify-around">
-            <Link href="/home"><li className="px-3"> Home </li></Link>
-            <Link href="/schemes"><li className="px-3"> Schemes </li></Link>
-           <Link href="/braille/orbitwriter"><li className="px-3"> Orbit-Writer </li></Link> 
-           <Link href="https://65818bb9e552d002e5f9d0cd--celadon-smakager-f009c0.netlify.app/"> <li className="px-3"> Playground </li></Link> 
-            <Link href="/education">
+          {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
+                <Link href="/home">
+                  <li className="px-3">
+                    {localStorage.getItem('lang') === 'english'
+                      ? 'Home'
+                      : 'होम'}
+                  </li>
+                </Link>
+              )}
+           {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
+            <Link href="/schemes">
               <li className="px-3">
-                Education
-               </li>
+                {localStorage.getItem('lang') === 'english'
+                  ? 'Schemes'
+                  : 'योजनाएँ'}
+              </li>
             </Link>
+          )}
+          {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
+          <Link href="/braille/orbitwriter">
+            <li className="px-3">
+              {localStorage.getItem('lang') === 'english'
+                ? 'Orbit-Writer'
+                : 'ऑर्बिट राइटर'}
+            </li>
+          </Link>
+        )} 
+        {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
+        <Link href="https://65818bb9e552d002e5f9d0cd--celadon-smakager-f009c0.netlify.app/">
+          <li className="px-3">
+            {localStorage.getItem('lang') === 'english'
+              ? 'Playground'
+              : 'प्लेग्राउंड'}
+          </li>
+        </Link>
+      )}
+      {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
+        <Link href="/education">
+          <li className="px-3">
+            {localStorage.getItem('lang') === 'english'
+              ? 'Education'
+              : 'शिक्षा'}
+          </li>
+        </Link>
+      )}
 
           </ul>
          </div>
