@@ -13,7 +13,7 @@ function MainNav() {
         <div className="text-lg xsms:text-base p-2 font-mono xsssm:py-1 xsssm:text-sm  font-medium mlg:text-base">
           <ul className="flex flex-row justify-around">
           {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
-                <Link href="/home">
+                <Link href="/">
                   <li className="px-3">
                     {localStorage.getItem('lang') === 'english'
                       ? 'Home'

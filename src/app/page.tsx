@@ -649,12 +649,11 @@ var value ="language";
                 <div className=" flex flex-row-reverse justify-right p-4">
                   <div className="p-1 text-right">
                     <div className="text-4xl font-semibold mt-9 pr-[3vw]">
-                      Collaborate
+                    {localStorage.getItem('lang') === "english" ? "Collaborate" : "हमारे साथ "}
                     </div>
 
                     <div className="text-4xl font-semibold  ml-3 mr-10">
-                      with Us
-                    </div>
+                    {localStorage.getItem('lang') === "english" ? "with Us !" : "मिलकर काम करें"}                    </div>
                     <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
                       Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all
                     </div>

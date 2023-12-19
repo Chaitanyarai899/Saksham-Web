@@ -48,15 +48,8 @@ function schemes() {
  
   return <>
   <div className="flex flex-col mx-auto justify-center">
-    <div className="font-semibold text-2xl m-2 mt-5 mx-auto">Empowering Disability: Government Initiatives</div>
-    <div className="font-medium text-lg mx-11 my-2">Explore a spectrum of government initiatives 
-    designed to empower and support individuals with disabilities. From education and employment 
-    opportunities to healthcare and accessibility enhancements, these schemes aim to foster inclusivity 
-    and improve the quality of life for people with diverse abilities.
-    {/* <p className="mt-2">*/} Discover a range of programs  
-    tailored to address specific needs, ensuring equal access, rights, and opportunities for every 
-    member of our community. Stay informed about the latest advancements in disability support
-     and join us in promoting a more inclusive and accessible society for all.</div>
+    <div className="font-semibold text-2xl m-2 mt-5 mx-auto">{localStorage.getItem('lang') === "english" ? "Empowering Disability: Government Initiatives" : " दिव्यांगता को सशक्त करना: सरकारी पहल"} </div>
+    <div className="font-medium text-lg mx-11 my-2"> {localStorage.getItem('lang') === "english" ? "Explore a spectrum of government initiatives designed to empower and support individuals with disabilities. From education and employment opportunities to healthcare and accessibility enhancements, these schemes aim to foster inclusivity and improve the quality of life for people with diverse abilities. Discover a range of programs tailored to address specific needs, ensuring equal access, rights, and opportunities for every member of our community. Stay informed about the latest advancements in disability support and join us in promoting a more inclusive and accessible society for all" : "व्यक्तियों को सशक्त और समर्थन प्रदान करने और सक्षमताओं के साथ व्यक्तियों का समर्थन करने के लिए निर्मित सरकारी पहलों की विविधता का अन्वेषण करें। शिक्षा से लेकर रोजगार के अवसरों तक, स्वास्थ्य सेवाओं से लेकर पहुंचता और सुधारों तक, ये योजनाएँ समावेशीता को प्रोत्साहित करने और विभिन्न क्षमताओं वाले लोगों के जीवन की गुणवत्ता में सुधार करने का उद्देश्य रखती हैं। विशेष जरूरतों को पूरा करने के लिए तैयार की गई कई कार्यक्रमों का पता लगाएं, जो प्रत्येक समुदाय के हर सदस्य के लिए समान पहुंच, अधिकार और अवसर सुनिश्चित करने के लिए तैयार किए गए हैं। नवीनतम विकासों के बारे में जानकारी रखें और हमारे साथ एक समावेशी और पहुंचने वाली समाज को बढ़ावा देने में शामिल हों।"}</div>
 
   </div>
   <div className="relative shadow-md sm:rounded-lg border-4 grid place-content-center border-rose-600 rounded-lg overflow-x-hidden m-6">{schemes.length > 0 ? (
