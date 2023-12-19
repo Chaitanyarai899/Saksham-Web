@@ -44,6 +44,17 @@ const frameworks = [
   },
   
 ]
+
+function useOnceCall(cb : any , condition = true) {
+  const isCalledRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (condition && !isCalledRef.current) {
+      isCalledRef.current = true;
+      cb();
+    }
+  }, [cb, condition]);
+}
 function Braille() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("english")
@@ -56,7 +67,14 @@ function Braille() {
   const [tableData, setTableData] = useState<BrailleItem[]>([]);
   useEffect(() => {
     setTableData(brailleData);
+  console.log("use effect")
+
   }, []);
+  useOnceCall(()=>{
+    speak("Put your index fingers on the two bumps of keyboard and place two fingers on side of each bump")
+    speakhindi("अपनी तर्जनी को कीबोर्ड के दो उभारों पर रखें और दो उंगलियों को प्रत्येक उभार के किनारे पर रखें")
+
+  })
 
   const brailleMap: Record<string, string> = {
     S: "A",
@@ -146,7 +164,16 @@ function Braille() {
     pdf.text(outputValue, 10, 10); // Add your outputValue text to the PDF
     pdf.save('saksham_pdfdocument.pdf');
   };
+ const speakhindi =(text : any) => {
+  const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
 
+      utterance.lang='hi-IN'; 
+       utterance.rate = 0.8;
+  
+    synth.speak(utterance);
+
+ }
   const speak = (text: any) => {
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);

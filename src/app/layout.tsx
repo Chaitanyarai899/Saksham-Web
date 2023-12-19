@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en" className="h-full">
+      <html lang="hi" className="h-full">
         <body
           className={cn(
             "relative h-full font-sans antialiased grainy",

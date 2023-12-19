@@ -1,225 +1,685 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+"use client";
+import React ,{ useState, ChangeEvent, KeyboardEvent, useEffect }  from "react";
 import Image from "next/image";
 import Link from "next/link";
+import useEffectOnce from 'use-effect-once';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-export default function Home() {
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { cn } from "@/lib/utils";
+
+const formSchema = z.object({
+  username: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+  phone: z.number().min(10, {
+    message: "Your phone number must contain 10 digits",
+  }),
+  email: z.string().email({
+    message: "Enter a Valid Email",
+  }),
+  expertise: z.string().min(1, {
+    message: "Enter an Expertise",
+  }),
+});
+
+const ngoFormSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Enter a Valid Email",
+  }),
+  phone: z.number().min(10, {
+    message: "Your phone number must contain 10 digits",
+  }),
+});
+
+function onSubmit(values: z.infer<typeof formSchema>) {
+  // Do something with the form values.
+  // ✅ This will be type-safe and validated.
+  console.log(values);
+}
+function useOnceCall(cb : any , condition = true) {
+  const isCalledRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (condition && !isCalledRef.current) {
+      isCalledRef.current = true;
+      cb();
+    }
+  }, [cb, condition]);
+}
+function onNGOSubmit(values: z.infer<typeof ngoFormSchema>) {
+  // Do something with the NGO form values.
+  // ✅ This will be type-safe and validated.
+  console.log(values);
+}
+
+function learn() {
+  const [loaded, setloaded] = useState<string>("");
+  // const speak = (text: any) => {
+    //   console.log("speaking")
+
+    //     const synth = window.speechSynthesis;
+    //     const utterance = new SpeechSynthesisUtterance(text);
+    //     if(value == "hindi"){
+    //       utterance.lang='hi-IN'; 
+    //        utterance.rate = 0.8;
+    //     }
+    //     synth.speak(utterance);
+    //   };
+
+    useOnceCall(() => {
+
+      const speak = (text: any) => {
+        console.log("speaking");
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+      
+         
+        
+        synth.speak(utterance);
+      };
+      const speakhindi = (text: any) => {
+        console.log("speaking");
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+      
+          utterance.lang = 'hi-IN'; 
+          utterance.rate = 0.8;
+        
+        synth.speak(utterance);
+      };
+    
+      console.log("speak");
+      if (loaded !="true") {
+        speak("welcome to Saksham, Please press any key with a bump to use Orbit Writer");
+        speakhindi("सक्षम में आपका स्वागत है, ऑर्बिट राइटर का उपयोग करने के लिए कृपया किसी भी कुंजी को बम्प के साथ दबाएं");
+        setloaded("true");
+      }
+      
+    
+    });
+  
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      phone: undefined,
+      email: "",
+      expertise: "",
+    },
+  });
+
+  const ngoForm = useForm<z.infer<typeof ngoFormSchema>>({
+    resolver: zodResolver(ngoFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: undefined,
+    },
+  });
+
   return (
     <>
-      <MaxWidthWrapper>
-        <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            <span className="text-rose-600">Saksham</span> Empowering People
-            with Disabilities
-          </h1>
-          <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-            Something nice and catchy get the attention of the user something
-            catchy and nice.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Link href="/home" className={buttonVariants()}>
-              Get Started &rarr;
-            </Link>
-            <Button variant="ghost">Support our Cause</Button>
+      <div className="p-2 flex flex-row h-[60vh] mb-20">
+        <div className="w-[50%]">
+          <div className="py-auto px-auto my-auto flex flex-col ">
+            <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">
+              Enspire. Empower.
+              <div className="my-2">Educate.</div>
+              <div className="font-normal mt-3 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
+                It's not about being Disabled,
+              </div>
+              <div className="font-normal mt-1 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
+                It's about being सaksham
+              </div>
+            </div>
           </div>
         </div>
-      </MaxWidthWrapper>
+        <div className="w-[50%]">
+          <div className="flex flex-row justify-center my-13">
+            <div className="flex flex-col">
+              <Image
+                src="/diasbledpeople.png"
+                alt="Preview of video call feature"
+                width={250}
+                height={30}
+                quality={100}
+                className="rounded-md items-center "
+              />
+              <Image
+                src="/handsignwomen.png"
+                alt="Preview of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+            </div>
+            <div className="flex flex-col m-5">
+              <Image
+                src="/empower.png"
+                alt="Preiew of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+              <Image
+                src="/enspire.png"
+                alt="Preview of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+              <Image
+                src="/educate.png"
+                alt="Preview of video call feature"
+                width={200}
+                height={100}
+                quality={100}
+                className="rounded-md mx-auto items-center "
+              />
+            </div>
+            <div className="flex flex-col"></div>
+          </div>
+        </div>
+      </div>
 
-      <div>
-        <div className="relative isolate">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          >
-            <div
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+      <div className="h-5 ">
+        <div className="w-fit rounded-2xl mx-auto bg-[#e6e6e6]">
+          <div className=" flex flex-row p-4">
+            <div className="p-1 ">
+              <div className="text-4xl font-semibold mt-9  ml-3 pr-[6vw]">
+                Learn Beyond{" "}
+              </div>
+
+              <div className="text-4xl font-semibold  ml-3 mr-10">
+                any Restriction
+              </div>
+              <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
+                We Provide you with the Tools you need and the benefits you
+                deserve !
+              </div>
+              <div className="text-xl font-normal mr-10 mt-1 ml-2 ">
+                To facilitate inclusions and make everyone Saksham.
+              </div>
+
+              <div className="flex flex-row mt-7">
+                <Button className="bg-transparent mt-5 text-black mr-1 rounded-3xl w-fit border border-black">
+                  <Image
+                    src="https://cdn.iconscout.com/icon/premium/png-512-thumb/mentor-1-499019.png?f=webp&w=256"
+                    alt="Preview of video call feature"
+                    width={40}
+                    height={100}
+                    quality={100}
+                    className="rounded-3xl p-1 mr-2   "
+                  />
+                  Get a Mentor
+                </Button>
+                <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
+                  <Image
+                    src="https://cdn.iconscout.com/icon/premium/png-512-thumb/about-us-2840081-2359589.png?f=webp&w=256"
+                    alt="Preview of video call feature"
+                    width={40}
+                    height={100}
+                    quality={100}
+                    className="rounded-3xl p-1 mr-2   "
+                  />
+                  About us
+                </Button>
+              </div>
+              <Button className="bg-transparent my-3 text-black rounded-3xl w-fit px-4 border border-black">
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/investment-idea-1554251-1317258.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={40}
+                  height={100}
+                  quality={100}
+                  className="rounded-3xl p-1 mr-2   "
+                />
+                Support us
+              </Button>
+            </div>
+            <div className="p-1">
+              <Image
+                src="/educated.png"
+                alt="Preview of video call feature"
+                width={380}
+                height={100}
+                quality={100}
+                className="rounded-3xl mr-[1vw] items-center "
+              />{" "}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-2 mt-[68vh] ">
+        <div className="flex flex-col justify-center mt-2">
+          <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
+            The Features are endless,{" "}
+          </div>
+          <div className="font-normal font-semibold text-xl mt-1  text-center my-auto">
+            So are the opportunities{" "}
+          </div>
+        </div>
+
+        <div className="m-10 flex flex-row flex-wrap justify-center mx-auto ">
+          <Card className="w-[21vw] m-4  ">
+            <CardHeader>
+              <CardTitle>
+                {" "}
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/alphabets-2862416-2390540.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={120}
+                  height={100}
+                  quality={100}
+                  className="rounded-md mx-auto items-center "
+                />
+              </CardTitle>
+              <CardDescription className="py-2 ">
+                {" "}
+                <span className="font-semibold text-black text-lg ">
+                  Start With The Basics
+                </span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-[21vw] m-4 ">
+            <CardHeader>
+              <CardTitle>
+                {" "}
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/numbers-16-742294.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={120}
+                  height={100}
+                  quality={100}
+                  className="rounded-md mx-auto items-center "
+                />
+              </CardTitle>
+              <CardDescription className="py-2">
+                {" "}
+                <span className="font-semibold text-black text-lg ">
+                  Digital Orbit Writer
+                </span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-[21vw] m-4 ">
+            <CardHeader>
+              <CardTitle>
+                {" "}
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/objects-7491084-6382955.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={120}
+                  height={100}
+                  quality={100}
+                  className="rounded-md mx-auto items-center "
+                />
+              </CardTitle>
+              <CardDescription className="py-2">
+                {" "}
+                <span className="font-semibold text-black text-lg ">
+                  Government Schemes
+                </span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+
+        <div className="m-10 flex flex-row flex-wrap justify-center mx-auto ">
+          <Card className="w-[21vw] m-4 ">
+            <CardHeader>
+              <CardTitle>
+                {" "}
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/emotions-5347777-4467817.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={120}
+                  height={100}
+                  quality={100}
+                  className="rounded-md mx-auto items-center "
+                />
+              </CardTitle>
+              <CardDescription className="py-2">
+                {" "}
+                <span className="font-semibold text-black text-lg ">
+                  Online Sign Language Practice
+                </span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-[21vw] m-4 ">
+            <CardHeader>
+              <CardTitle>
+                {" "}
+                <Image
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/days-6503034-5462334.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={120}
+                  height={100}
+                  quality={100}
+                  className="rounded-md mx-auto items-center "
+                />
+              </CardTitle>
+              <CardDescription className="py-2">
+                {" "}
+                <span className="font-semibold text-black text-lg ">
+                  Book A Mentoring Session
+                </span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-[21vw] m-4 ">
+            <CardHeader>
+              <CardTitle>
+                {" "}
+                <Image
+                  src="https://cdn.iconscout.com/icon/free/png-512/free-animals-3706539-3089267.png?f=webp&w=256"
+                  alt="Preview of video call feature"
+                  width={120}
+                  height={100}
+                  quality={100}
+                  className="rounded-md mx-auto items-center "
+                />
+              </CardTitle>
+              <CardDescription className="py-2">
+                {" "}
+                <span className="font-semibold text-black text-lg ">
+                  {" "}
+                  Animals : The first Letters
+                </span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+        <MaxWidthWrapper>
+          <div className="text-center my-16">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Personalized Mentor Support
+            </h2>
+            <p className="mt-2 text-lg text-gray-500">
+              Select a mentor from a pool of mentors, experts & get 1-on-1
+              mentorship!
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-col justify-between sm:flex-row sm:justify-center">
+            <div className="w-full px-16 flex flex-row justify-between sm:max-w-md">
+              <Link
+                className={cn(
+                  buttonVariants(),
+                  "flex flex-row justify-center gap-2"
+                )}
+                href="/search-mentor"
+              >
+                <span className="">
+                  <Search className="h-4 w-4" />
+                </span>{" "}
+                Find A Mentor
+              </Link>
+
+                  
+
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="ghost" className="border border-rose-600">
+                    Become A mentor
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Become A Mentor Today</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      <Form {...form}>
+                        <form
+                          onSubmit={form.handleSubmit(onSubmit)}
+                          className="text-left space-y-8"
+                        >
+                          <FormField
+                            control={form.control}
+                            name="username"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Enter Your Name"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Enter Your Phone Number"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Enter Your Email"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="expertise"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Expertise</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Enter Your Expertise"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <Button className="w-full" type="submit">
+                            Submit
+                          </Button>
+                        </form>
+                      </Form>
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+            <Image
+              src="https://d8it4huxumps7.cloudfront.net/uploads/images/657998c6eb87f_frame_1000013453_2.png?d=2360x672"
+              alt="mentor"
+              width={1230}
+              height={400}
+              className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
             />
           </div>
 
-          <div>
-            <div className="mx-auto max-w-6xl px-6 lg:px-8">
-              <div className="mt-16 flow-root sm:mt-24">
-                <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                  <Image
-                    src="/preview.png"
-                    alt="Preview of video call feature"
-                    width={1364}
-                    height={866}
-                    quality={100}
-                    className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
-                  />
+          <div
+            id="collaborate"
+            className="mt-6 w-full flex content-center h-fit mb-4"
+          >
+            <div className=" rounded-lg w-[95%] mx-auto h-full ">
+              <div className="w-fit rounded-2xl h-full mx-auto bg-[#e6e6e6]">
+                <div className=" flex flex-row-reverse justify-right p-4">
+                  <div className="p-1 text-right">
+                    <div className="text-4xl font-semibold mt-9 pr-[3vw]">
+                      Collaborate
+                    </div>
+
+                    <div className="text-4xl font-semibold  ml-3 mr-10">
+                      with Us
+                    </div>
+                    <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
+                      Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all
+                    </div>
+
+       <div className="flex flex-row-reverse mt-7">
+              {/* NGO Sign Up Form */}
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="ghost" className="mr-8 border border-black">
+                    Sign Up as an NGO
+                  </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>NGO Sign Up</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        <Form {...ngoForm}>
+                          <form
+                            onSubmit={ngoForm.handleSubmit(onNGOSubmit)}
+                            className="text-left space-y-8"
+                          >
+                            <FormField
+                              control={ngoForm.control}
+                              name="name"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Name</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Name"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={ngoForm.control}
+                              name="email"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Email</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Email"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={ngoForm.control}
+                              name="phone"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Phone Number</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Phone Number"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <Button className="w-full" type="submit">
+                              Submit
+                            </Button>
+                          </form>
+                        </Form>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+            </div>
+                  </div>
+                  <div className="p-1">
+                    <Image
+                      src="/Collaborate.png"
+                      alt="Preview of video call feature"
+                      width={380}
+                      height={100}
+                      quality={100}
+                      className="rounded-3xl mr-[1vw] items-center "
+                    />{" "}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          >
-            <div
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-              className="relative left-[calc(50%-13rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-36rem)] sm:w-[72.1875rem]"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center py-5">
-        <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
-          <div className="flex-shrink-0 w-full sm:w-1/2 mb-4 sm:mb-0">
-            <Image
-              src="/hero.png"
-              alt="Description of the image"
-              width={400}
-              height={200}
-              quality={100}
-              className="rounded-md"
-            />
-          </div>
-
-          <div className="w-full sm:w-1/2 flex flex-col items-center justify-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Breaking Barriers, Building Opportunities
-            </h2>
-            <p className="text-lg text-gray-700">
-              Saksham: Empowering Specially Abled Individuals is a
-              groundbreaking initiative that aims to create a more inclusive
-              society in India. We believe that everyone, regardless of their
-              abilities, should have the opportunity to learn, communicate, and
-              thrive. Through our programs and services, we provide support,
-              resources, and empowerment to individuals with disabilities,
-              enabling them to lead fulfilling lives.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center">
-        <h2 className="text-3xl font-bold text-center mb-4 py-8">
-          Our Mission & Vision
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <h2 className="text-2xl font-bold mb-4 text-left">
-            Empowering Specially Abled Individuals with Accessible Education,
-            Community Support, and Skill Development
-          </h2>
-
-          <p className="text-sm text-gray-500 text-left">
-            At Saksham, we are dedicated to building a society that is more
-            inclusive by offering accessible education, community support, and
-            skill development opportunities to people with disabilities. Our
-            goal is to enable individuals of varying abilities to acquire
-            knowledge, communicate effectively, and succeed.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-10">
-          <div>
-            <p className="text-lg font-bold mb-2 text-left">
-              Accessible Education for All
-            </p>
-            <p className="text-gray-700 text-left">
-              Our accessible education program ensures that individuals with
-              disabilities have equal access to quality education, enabling them
-              to reach their full potential.
-            </p>
-            <p className="text-rose-600 font-bold mt-2 cursor-pointer text-left">
-              Learn More{" "}
-            </p>
-          </div>
-          <div>
-            <p className="text-lg font-bold mb-2 text-left">
-              Community Support for Inclusion
-            </p>
-            <p className="text-gray-700 text-left">
-              Through our community support initiatives, we foster an inclusive
-              environment where individuals with disabilities feel supported,
-              valued, and connected.
-            </p>
-            <p className="text-rose-600 font-bold mt-2 cursor-pointer text-left">
-              Learn More{" "}
-            </p>
-          </div>
-          <div>
-            <p className="text-lg font-bold mb-2 text-left">
-              Skill Development for Empowerment
-            </p>
-            <p className="text-gray-700 text-left">
-              Our skill development programs equip specially abled individuals
-              with the necessary skills and knowledge to enhance their
-              employability and independence.
-            </p>
-            <p className="text-rose-600 font-bold mt-2 cursor-pointer text-left">
-              Learn More{" "}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-8 text-center">
-        <h2 className="text-3xl font-bold text-center mb-4">
-          Frequently Asked Questions
-        </h2>
-
-        <Accordion type="single" collapsible>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>What is Saksham?</AccordionTrigger>
-            <AccordionContent className="text-left">
-              Saksham: Empowering Specially Abled Individuals is a
-              groundbreaking initiative aimed at creating a more inclusive
-              society in India where everyone, regardless of their abilities,
-              has the opportunity to learn, communicate, and thrive.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>How can I contribute?</AccordionTrigger>
-            <AccordionContent className="text-left">
-              There are many ways you can contribute to Saksham: Empowering
-              Specially Abled Individuals. You can volunteer your time, donate
-              funds, or spread awareness about the initiative.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>Who can benefit from Saksham?</AccordionTrigger>
-            <AccordionContent className="text-left">
-              Saksham: Empowering Specially Abled Individuals is designed to
-              benefit individuals with disabilities of all kinds. Our programs
-              and resources are tailored to meet the unique needs of each
-              individual.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-4">
-            <AccordionTrigger>How can i get involved?</AccordionTrigger>
-            <AccordionContent className="text-left">
-              Getting involved with Saksham: Empowering Specially Abled
-              Individuals is easy. You can join our volunteer network,
-              participate in fundraising events, or become a corporate partner.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-5">
-            <AccordionTrigger>Where is Saksham based?</AccordionTrigger>
-            <AccordionContent className="text-left">
-              Saksham: Empowering Specially Abled Individuals is based in Delhi,
-              but our reach extends to individuals and communities across the
-              country.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        </MaxWidthWrapper>
       </div>
     </>
   );
 }
+
+export default learn;
+
