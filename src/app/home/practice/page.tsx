@@ -3,19 +3,22 @@ import React from 'react'
 
 export default function page() {
     return (
-    <MaxWidthWrapper className='w-full'>
-        <div className='py-20 mx-auto text-center flex bg-red flex-col items-center'>
+    <div className='text-lg bg-[#00122e]'>
+        <div className='mx-auto text-center flex bg-red flex-col items-center overflow-hidden'>
+        <div className=" mt-4  flex flex-row justify-center">
+        <p className="text-2xl text-white font-semibold ">Saksham Playground : Let's make learning fun </p>
+      </div>
         <div>
-      <h1>Embedded Saksham Practice Playground</h1>
+      
       <iframe
-        src="https://sakshampracticeplayground.netlify.app/"
+        src="https://monumental-pavlova-8b3a3d.netlify.app/"
         title="Saksham Practice Playground"
-        width="1000vw"
-        height="600px"
+  
+        className='w-screen h-screen'
         allow="camera; microphone"
       ></iframe>
     </div>
         </div>
-    </MaxWidthWrapper>
+    </div>
   )
 }
