@@ -139,7 +139,9 @@ var value ="language";
          
         
         synth.speak(utterance);
-        localStorage.setItem("lang", "english");
+        if(localStorage){
+          localStorage.setItem("lang", localStorage.getItem("lang") || "english");
+        }
         localStorage.getItem("lang");
       };
       const speakhindi = (text: any) => {
@@ -224,6 +226,7 @@ var value ="language";
                 onSelect={(currentValue) => {
                   localStorage.setItem('lang', currentValue === value ? '' : currentValue);
                   setOpen(false)
+                  window.location.reload();
                 }}
               >
                 <Check
@@ -510,11 +513,10 @@ var value ="language";
         <MaxWidthWrapper>
           <div className="text-center my-16">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Personalized Mentor Support
+              {localStorage.getItem('lang') === "english" ? " Personalized Mentor Support" : "व्यक्तिगत मेंटर समर्थन"}
             </h2>
             <p className="mt-2 text-lg text-gray-500">
-              Select a mentor from a pool of mentors, experts & get 1-on-1
-              mentorship!
+              {localStorage.getItem('lang') === "english" ? "Select a mentor from a pool of mentors, experts & get 1-on-1 mentorship!" : "मेंटर को चुनें जो कि मेंटर्स और विशेषज्ञों के समृद्धि से भरपूर समूह से हैं, और 1-on-1 मेंटरशिप प्राप्त करें!"}
             </p>
           </div>
 
@@ -530,7 +532,7 @@ var value ="language";
                 <span className="">
                   <Search className="h-4 w-4" />
                 </span>{" "}
-                Find A Mentor
+                {localStorage.getItem('lang') === "english" ? "Find A Mentor" : "एक मेंटर ढूंढें"}
               </Link>
 
                   
@@ -538,12 +540,14 @@ var value ="language";
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="ghost" className="border border-rose-600">
-                    Become A mentor
+                    {localStorage.getItem('lang') === "english" ? "Become A mentor" : "मेंटर बनें"}
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Become A Mentor Today</AlertDialogTitle>
+                    <AlertDialogTitle>
+                      {localStorage.getItem('lang') === "english" ? "Become A Mentor Today" : "आज ही मेंटर बनें"}
+                    </AlertDialogTitle>
                     <AlertDialogDescription>
                       <Form {...form}>
                         <form
