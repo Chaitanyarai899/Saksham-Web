@@ -56,8 +56,26 @@ const formSchema = z.object({
   }),
 });
 
+const ngoFormSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Enter a Valid Email",
+  }),
+  phone: z.number().min(10, {
+    message: "Your phone number must contain 10 digits",
+  }),
+});
+
 function onSubmit(values: z.infer<typeof formSchema>) {
   // Do something with the form values.
+  // ✅ This will be type-safe and validated.
+  console.log(values);
+}
+
+function onNGOSubmit(values: z.infer<typeof ngoFormSchema>) {
+  // Do something with the NGO form values.
   // ✅ This will be type-safe and validated.
   console.log(values);
 }
@@ -70,6 +88,15 @@ function learn() {
       phone: undefined,
       email: "",
       expertise: "",
+    },
+  });
+
+  const ngoForm = useForm<z.infer<typeof ngoFormSchema>>({
+    resolver: zodResolver(ngoFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: undefined,
     },
   });
 
@@ -377,9 +404,8 @@ function learn() {
                 </span>{" "}
                 Find A Mentor
               </Link>
-              {/* <Button variant="ghost" className="border border-rose-600">
-                Become A Mentor
-              </Button> */}
+
+                  
 
               <AlertDialog>
                 <AlertDialogTrigger asChild>
@@ -501,41 +527,84 @@ function learn() {
                       Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all
                     </div>
 
-                    <div className="flex flex-row-reverse mt-7">
-                      <Button className="bg-transparent mt-5 text-black mr-1 rounded-3xl w-fit border border-black">
-                        <Image
-                          src="https://cdn.iconscout.com/icon/premium/png-512-thumb/mentor-1-499019.png?f=webp&w=256"
-                          alt="Preview of video call feature"
-                          width={40}
-                          height={100}
-                          quality={100}
-                          className="rounded-3xl p-1 mr-2"
-                        />
-                        Get a Mentor
-                      </Button>
-                      <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
-                        <Image
-                          src="https://cdn.iconscout.com/icon/premium/png-512-thumb/about-us-2840081-2359589.png?f=webp&w=256"
-                          alt="Preview of video call feature"
-                          width={40}
-                          height={100}
-                          quality={100}
-                          className="rounded-3xl p-1 mr-2   "
-                        />
-                        About us
-                      </Button>
-                    </div>
-                    <Button className="bg-transparent my-3 text-black rounded-3xl w-fit px-4 mr-[3px] border border-black">
-                      <Image
-                        src="https://cdn.iconscout.com/icon/premium/png-512-thumb/investment-idea-1554251-1317258.png?f=webp&w=256"
-                        alt="Preview of video call feature"
-                        width={40}
-                        height={100}
-                        quality={100}
-                        className="rounded-3xl p-1 mr-5"
-                      />
-                      Support us
-                    </Button>
+       <div className="flex flex-row-reverse mt-7">
+              {/* NGO Sign Up Form */}
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="ghost" className="mr-8 border border-black">
+                    Sign Up as an NGO
+                  </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>NGO Sign Up</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        <Form {...ngoForm}>
+                          <form
+                            onSubmit={ngoForm.handleSubmit(onNGOSubmit)}
+                            className="text-left space-y-8"
+                          >
+                            <FormField
+                              control={ngoForm.control}
+                              name="name"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Name</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Name"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={ngoForm.control}
+                              name="email"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Email</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Email"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={ngoForm.control}
+                              name="phone"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Phone Number</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Phone Number"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <Button className="w-full" type="submit">
+                              Submit
+                            </Button>
+                          </form>
+                        </Form>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+            </div>
                   </div>
                   <div className="p-1">
                     <Image
