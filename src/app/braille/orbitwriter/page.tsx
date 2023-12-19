@@ -2,6 +2,9 @@
 import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from "react";
 import brailleData from "./braille.json";
 import brailleData2 from "./braille2.json";
+import brailleHindi from "./brailleHindi.json"
+import brailleHindi2 from "./brailleHindi2.json"
+
 import {
   Table,
   TableBody,
@@ -147,6 +150,10 @@ function Braille() {
   const speak = (text: any) => {
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
+    if(value == "hindi"){
+      utterance.lang='hi-IN'; 
+       utterance.rate = 0.8;
+    }
     synth.speak(utterance);
   };
 
@@ -275,7 +282,7 @@ function Braille() {
           </div>
         )}
       </div>
-      <div className=" justify-center border-4 border-rose-600 m-4 overflow-y rounded-lg bg-white/70">
+      {value == "english" ? <div className=" justify-center border-4 border-rose-600 m-4 overflow-y rounded-lg bg-white/70">
         <div className="grid grid-cols-8">
           <div className="h-full col-span-4 overflow-y" id="braille-infobox">
             <Table className="text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400 p-8 w-[95%] h-[90%] m-auto my-4 self-center">
@@ -328,7 +335,60 @@ function Braille() {
             </Table>
           </div>
         </div>
-      </div>
+      </div> : <div className=" justify-center border-4 border-rose-600 m-4 overflow-y rounded-lg bg-white/70">
+        <div className="grid grid-cols-8">
+          <div className="h-full col-span-4 overflow-y" id="braille-infobox">
+            <Table className="text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400 p-8 w-[95%] h-[90%] m-auto my-4 self-center">
+              <TableHeader className="divide-x-[2px] divide-black/20 text-md text-black dark:bg-gray-700 dark:text-gray-400">
+                <TableRow className="px-6 py-3 font-semibold text-md text-stone-900">
+                  <TableHead className="w-[100px]">Character</TableHead>
+                  <TableHead>Braille</TableHead>
+                  <TableHead>String</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody className="divide-y-[1px] divide-black/20">
+                {brailleHindi.map((item) => (
+                  <TableRow
+                    key={item.character}
+                    className="border-b border-1 dark:bg-gray-800 dark:border-gray-700 my-2 hover:bg-gray-200 hover:text-[16px] hover:text-black/90 transition-all dark:hover:bg-gray-600 flex-row content-center hover:rounded-lg tracking-wide"
+                  >
+                    <TableCell className="font-medium">
+                      {item.character}
+                    </TableCell>
+                    <TableCell>{item.brailleCode}</TableCell>
+                    <TableCell>{item.string}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          <div className="h-full col-span-4 overflow-y" id="braille-infobox">
+            <Table className="text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400 p-8 w-[95%] h-[90%] m-auto my-4 self-center">
+              <TableHeader className="divide-x-[2px] divide-black/20 text-md text-black dark:bg-gray-700 dark:text-gray-400">
+                <TableRow className="px-6 py-3 font-semibold text-md text-stone-900">
+                  <TableHead className="w-[100px]">Character</TableHead>
+                  <TableHead>Braille</TableHead>
+                  <TableHead>String</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody className="divide-y-[1px] divide-black/20">
+                {brailleHindi2.map((item) => (
+                  <TableRow
+                    key={item.character}
+                    className="border-b border-1 dark:bg-gray-800 dark:border-gray-700 my-2 hover:bg-gray-200 hover:text-[16px] hover:text-black/90 transition-all dark:hover:bg-gray-600 flex-row content-center hover:rounded-lg tracking-wide"
+                  >
+                    <TableCell className="font-medium">
+                      {item.character}
+                    </TableCell>
+                    <TableCell>{item.brailleCode}</TableCell>
+                    <TableCell>{item.string}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      </div> }
     </div>
   );
 }

@@ -1,0 +1,132 @@
+[
+  {
+    "character": "ण",
+    "brailleCode": "FJKL",
+    "string": "3456"
+  },
+  {
+    "character": "त",
+    "brailleCode": "DFJK",
+    "string": "2345"
+  },
+  {
+    "character": "थ",
+    "brailleCode": "SJFJL",
+    "string": "14346"
+  },
+  {
+    "character": "द",
+    "brailleCode": "SJK",
+    "string": "145"
+  },
+  {
+    "character": "ध",
+    "brailleCode": "DFJL",
+    "string": "2346"
+  },
+  {
+    "character": "न",
+    "brailleCode": "SFJK",
+    "string": "1345"
+  },
+  {
+    "character": "प",
+    "brailleCode": "SDFJ",
+    "string": "1234"
+  },
+  {
+    "character": "फ",
+    "brailleCode": "DFK",
+    "string": "235"
+  },
+  {
+    "character": "फ़",
+    "brailleCode": "DJF",
+    "string": "243"
+  },
+  {
+    "character": "ब",
+    "brailleCode": "SD",
+    "string": "12"
+  },
+  {
+    "character": "भ",
+    "brailleCode": "JK",
+    "string": "45"
+  },
+  {
+    "character": "म",
+    "brailleCode": "SFJ",
+    "string": "134"
+  },
+  {
+    "character": "य",
+    "brailleCode": "SFJKL",
+    "string": "13456"
+  },
+  {
+    "character": "र",
+    "brailleCode": "SDFK",
+    "string": "1235"
+  },
+  {
+    "character": "ल",
+    "brailleCode": "SDF",
+    "string": "123"
+  },
+  {
+    "character": "व",
+    "brailleCode": "SDFJL",
+    "string": "12346"
+  },
+  {
+    "character": "श",
+    "brailleCode": "SJKL",
+    "string": "1456"
+  },
+  {
+    "character": "ष",
+    "brailleCode": "SDFJKL",
+    "string": "123456"
+  },
+  {
+    "character": "स",
+    "brailleCode": "DFJ",
+    "string": "234"
+  },
+  {
+    "character": "ह",
+    "brailleCode": "SDK",
+    "string": "125"
+  },
+  {
+    "character": "ॐ",
+    "brailleCode": "SDFJK",
+    "string": "12345"
+  },
+  {
+    "character": "त्र",
+    "brailleCode": "SDFJKL",
+    "string": "123456"
+  },
+  {
+    "character": "क्ष",
+    "brailleCode": "SKL",
+    "string": "156"
+  },
+  {
+    "character": "ड़",
+    "brailleCode": "DJFJKL",
+    "string": "243456"
+  },
+  {
+    "character": "ऽ",
+    "brailleCode": "D",
+    "string": "2"
+  },
+  {
+    "character": "्",
+    "brailleCode": "J",
+    "string": "4"
+  }
+]

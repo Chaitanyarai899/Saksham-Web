@@ -1,0 +1,139 @@
+[
+    {
+      "character": "अ",
+      "brailleCode": "S",
+      "string": "1"
+    },
+    {
+      "character": "इ",
+      "brailleCode": "DJ",
+      "string": "24"
+    },
+    {
+      "character": "ई",
+      "brailleCode": "FK",
+      "string": "35"
+    },
+    {
+      "character": "उ",
+      "brailleCode": "SFL",
+      "string": "136"
+    },
+    {
+      "character": "ऊ",
+      "brailleCode": "SDKL",
+      "string": "1256"
+    },
+    {
+      "character": "ए",
+      "brailleCode": "SK",
+      "string": "15"
+    },
+    {
+      "character": "ऐ",
+      "brailleCode": "FJ",
+      "string": "34"
+    },
+    {
+      "character": "ओ",
+      "brailleCode": "SFJ",
+      "string": "134"
+    },
+    {
+      "character": "औ",
+      "brailleCode": "DJL",
+      "string": "246"
+    },
+    {
+      "character": "क",
+      "brailleCode": "SF",
+      "string": "13"
+    },
+    {
+      "character": "क़",
+      "brailleCode": "K",
+      "string": "5"
+    },
+    {
+      "character": "ख",
+      "brailleCode": "DJL",
+      "string": "246"
+    },
+    {
+      "character": "ख़",
+      "brailleCode": "DJ",
+      "string": "24"
+    },
+    {
+      "character": "ग",
+      "brailleCode": "DJFKL",
+      "string": "24356"
+    },
+    {
+      "character": "ग़",
+      "brailleCode": "DJFKJ",
+      "string": "24354"
+    },
+    {
+      "character": "घ",
+      "brailleCode": "SDKL",
+      "string": "1256"
+    },
+    {
+      "character": "ङ",
+      "brailleCode": "FJL",
+      "string": "346"
+    },
+    {
+      "character": "च",
+      "brailleCode": "SJ",
+      "string": "14"
+    },
+    {
+      "character": "छ",
+      "brailleCode": "SKL",
+      "string": "156"
+    },
+    {
+      "character": "ज",
+      "brailleCode": "DKFJ",
+      "string": "2534"
+    },
+    {
+      "character": "ज़",
+      "brailleCode": "SFJKL",
+      "string": "13456"
+    },
+    {
+      "character": "झ",
+      "brailleCode": "FJKL",
+      "string": "3456"
+    },
+    {
+      "character": "ञ",
+      "brailleCode": "DK",
+      "string": "25"
+    },
+    {
+      "character": "ट",
+      "brailleCode": "DFJKL",
+      "string": "23456"
+    },
+    {
+      "character": "ठ",
+      "brailleCode": "DKFJL",
+      "string": "25346"
+    },
+    {
+      "character": "ड",
+      "brailleCode": "DJFJL",
+      "string": "24346"
+    },
+    {
+      "character": "ढ",
+      "brailleCode": "SDFJKL",
+      "string": "123456"
+    }
+   
+    
+]
