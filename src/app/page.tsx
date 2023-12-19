@@ -127,7 +127,7 @@ function learn() {
     //     }
     //     synth.speak(utterance);
     //   };
-var value ="";
+var value ="language";
     useOnceCall(() => {
 
       const speak = (text: any) => {
@@ -189,13 +189,14 @@ var value ="";
         <div className="w-[50%]">
           <div className="py-auto px-auto my-auto flex flex-col ">
             <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">
-              Enspire. Empower.
-              <div className="my-2">Educate.</div>
+              {localStorage.getItem('lang') === "english" ? "Enspire. Empower." : "प्रेरित करें। सशक्त करें।"} 
+              <div className="my-2">{localStorage.getItem('lang') === "english" ? "Educate." : "शिक्षा दें।"}</div>
               <div className="font-normal mt-3 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
-                It's not about being Disabled,
+                {localStorage.getItem('lang') === "english" ? "It's not about being Disabled," : "पंख उठाओ, सीख जगाओ,"}         
               </div>
               <div className="font-normal mt-1 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
-                It's about being सaksham
+              {localStorage.getItem('lang') === "english" ? "It's about being सaksham" : "सक्षम बनो, मुस्कुराओ."} 
+                
               </div>
               <div>
               <Popover open={open} onOpenChange={setOpen}>
@@ -298,19 +299,19 @@ var value ="";
           <div className=" flex flex-row p-4">
             <div className="p-1 ">
               <div className="text-4xl font-semibold mt-9  ml-3 pr-[6vw]">
-                Learn Beyond{" "}
-              </div>
+              {localStorage.getItem('lang') === "english" ? "Learn Beyond" : "सीखो, किसी भी "}            
+                </div>
 
               <div className="text-4xl font-semibold  ml-3 mr-10">
-                any Restriction
+              {localStorage.getItem('lang') === "english" ? "any Restrictins" : "प्रतिबंध से आगे"}
               </div>
               <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
-                We Provide you with the Tools you need and the benefits you
-                deserve !
+              {localStorage.getItem('lang') === "english" ? "We Provide you with the Tools you need and the benefits you deserve !" : "हम आपको वह साधन प्रदान करते हैं जिन्हें आपकी आवश्यकता है और जो लाभ"} 
+
               </div>
               <div className="text-xl font-normal mr-10 mt-1 ml-2 ">
-                To facilitate inclusions and make everyone Saksham.
-              </div>
+              {localStorage.getItem('lang') === "english" ? "To facilitate inclusions and make everyone Saksham.!" : "आपको स्वीकार करने के योग्य हैं"} 
+              </div> 
 
               <div className="flex flex-row mt-7">
                 <Button className="bg-transparent mt-5 text-black mr-1 rounded-3xl w-fit border border-black">
@@ -322,7 +323,7 @@ var value ="";
                     quality={100}
                     className="rounded-3xl p-1 mr-2   "
                   />
-                  Get a Mentor
+              {localStorage.getItem('lang') === "english" ? "Get a mentor" : "मेंटर प्राप्त करें"}            
                 </Button>
                 <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
                   <Image
@@ -333,7 +334,7 @@ var value ="";
                     quality={100}
                     className="rounded-3xl p-1 mr-2   "
                   />
-                  About us
+              {localStorage.getItem('lang') === "english" ? "RoadMap" : "रोडमैप"}            
                 </Button>
               </div>
               <Button className="bg-transparent my-3 text-black rounded-3xl w-fit px-4 border border-black">
@@ -345,7 +346,7 @@ var value ="";
                   quality={100}
                   className="rounded-3xl p-1 mr-2   "
                 />
-                Support us
+              {localStorage.getItem('lang') === "english" ? "Practice Sign Language" : "हस्त भाषा में अभ्यास करें"}            
               </Button>
             </div>
             <div className="p-1">
@@ -365,10 +366,12 @@ var value ="";
       <div className="p-2 mt-[68vh] ">
         <div className="flex flex-col justify-center mt-2">
           <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
-            The Features are endless,{" "}
+           {localStorage.getItem('lang') === "english" ? " The Features are endless," : "सुविधाएँ अनंत हैं,"}            
+
           </div>
           <div className="font-normal font-semibold text-xl mt-1  text-center my-auto">
-            So are the opportunities{" "}
+          {localStorage.getItem('lang') === "english" ? "So are the opportunities" : "जैसे ही अवसर।"}  
+            {" "}
           </div>
         </div>
 
