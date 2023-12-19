@@ -15,8 +15,11 @@ function MainNav() {
             <Link href="/schemes"><li className="px-3"> Schemes </li></Link>
            <Link href="/braille/orbitwriter"><li className="px-3"> Orbit-Writer </li></Link> 
             <li className="px-3"> Join Us </li>
-
-            <li className="px-3"> main </li>
+            <Link href="/education">
+              <li className="px-3">
+                Education
+               </li>
+            </Link>
 
           </ul>
          </div>
