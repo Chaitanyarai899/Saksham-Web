@@ -289,6 +289,11 @@ function learn() {
                     </Command>
                   </PopoverContent>
                 </Popover>
+                <Button variant={"outline"} className="block w-[14.3em] pt-2 mt-1">
+                  <Link href="/user-profile">
+                        Go to User's Profile
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
