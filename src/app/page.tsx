@@ -207,7 +207,7 @@ function learn() {
   return (
     <>
       <div className="p-2 flex flex-row h-[60vh] mb-20">
-        <form className="w-[10px] bg-grainy ">
+        <form className="w-[10px] bg-grainy relative right-96">
           <input
             type="text"
             className="text-white"
@@ -246,6 +246,10 @@ function learn() {
                       aria-expanded={open}
                       className="w-[200px] justify-between"
                     >
+                      {" "}
+                      {localStorage.getItem("lang") === "hindi"
+                        ? "भाषा चुने"
+                        : "Select Language"}
                       {value
                         ? frameworks.find(
                             (framework) => framework.value === value
