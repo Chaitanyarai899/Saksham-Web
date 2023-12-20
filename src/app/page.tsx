@@ -1,5 +1,5 @@
 "use client";
-import React ,{ useState, ChangeEvent, KeyboardEvent, useEffect }  from "react";
+import React ,{ useState, ChangeEvent, KeyboardEvent, useEffect, useRef }  from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, ChevronsUpDown } from "lucide-react"
@@ -65,6 +65,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -116,6 +117,7 @@ function onNGOSubmit(values: z.infer<typeof ngoFormSchema>) {
 
 function learn() {
   const [loaded, setloaded] = useState<string>("");
+  const inputRef = useRef(null);
   // const speak = (text: any) => {
     //   console.log("speaking")
 
@@ -127,6 +129,20 @@ function learn() {
     //     }
     //     synth.speak(utterance);
     //   };
+    const [v, setV] = useState<string>("")
+    const router = useRouter();
+    useEffect(()=> {
+      if(inputRef.current) {
+        // @ts-ignore 
+        inputRef.current.focus();
+      }
+    }, [])
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setV(event.target.value);
+      if(event.target.value === "f" || event.target.value === "j") {
+        router.push("/braille/orbitwriter")
+      }
+    }
 var value ="language";
     useOnceCall(() => {
 
@@ -188,6 +204,9 @@ var value ="language";
   return (
     <>
       <div className="p-2 flex flex-row h-[60vh] mb-20">
+        <form className="w-[10px] bg-grainy">
+          <input type="text" className="text-white" value={v} ref={inputRef} onChange={handleChange}></input>
+        </form>
         <div className="w-[50%]">
           <div className="py-auto px-auto my-auto flex flex-col ">
             <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">
