@@ -15,11 +15,11 @@ function useOnceCall(cb: any, condition = true) {
   }, [cb, condition]);
 }
 function page() {
-const [questions, setQuestions] = useState<{ question: string; answer: string; }[]>([]);
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
-  // const [questions, setQuestions] = useState<{ question: string; answer: string; }[]>([]);
+
   const questionsData = [
     {
       question:
@@ -74,13 +74,9 @@ const [questions, setQuestions] = useState<{ question: string; answer: string; }
   ];
 
   useEffect(() => {
-    if (localStorage.getItem("lang") === "english") {
-      setQuestions(questionsData as { question: string; answer: string; }[]);
-    } else {
-      setQuestions(easyeval_hindi as { question: string; answer: string; }[]);
-    }
+    // @ts-ignore
+    setQuestions(questionsData); // Randomly select 5 questions
   }, []);
-  
   useOnceCall(() => {
     speak(questionsData[0].question)
     });
