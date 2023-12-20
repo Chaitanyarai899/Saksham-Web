@@ -220,7 +220,7 @@ function learn() {
           <div className="py-auto px-auto my-auto flex flex-col ">
             <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">
               {localStorage.getItem("lang") === "english"
-                ? "Enspire. Empower."
+                ? "Inspire. Empower."
                 : "प्रेरित करें। सशक्त करें।"}
               <div className="my-2">
                 {localStorage.getItem("lang") === "english"
@@ -735,8 +735,8 @@ function learn() {
                         : "मिलकर काम करें"}{" "}
                     </div>
                     <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
-                      Join hands with us, as collaboration sparks innovation.
-                      Together, we can build a brighter future for all
+                    {localStorage.getItem('lang') === "english" ? "Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all" : "हाथ मिलाओ हमारे साथ, क्योंकि सहयोग से नई चीजों का जन्म होता है। साथ मिलकर हम सबके लिए एक और उज्ज्वल भविष्य बना सकते हैं।"}
+                      
                     </div>
 
                     <div className="flex flex-row-reverse mt-7">
