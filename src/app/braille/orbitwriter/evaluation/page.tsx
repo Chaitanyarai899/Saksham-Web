@@ -14,52 +14,52 @@ function page() {
     {
       question:
         "Using the orbit writer keys, what is the Braille equivalent for the word 'sun'?",
-      answer: "sdj",
+      answer: "DFSLSDFK",
     },
     {
       question:
         "What is the Braille equivalent for the word 'dog' using the orbit writer keys?",
-      answer: "sjl",
+      answer: "SJKSDKSJKK",
     },
     {
       question:
         "When using the orbit writer keys, what is the Braille equivalent for the word 'cat'?",
-      answer: "sfj",
+      answer: "SKSDFK",
     },
     {
       question:
         "What is the Braille equivalent for the word 'house' using the orbit writer keys?",
-      answer: "skdf",
+      answer: "SKJSDKSLDFSK",
     },
     {
       question:
         "Using the orbit writer keys, what is the Braille equivalent for the word 'book'?",
-      answer: "dfkl",
+      answer: "SDSDKSDKS",
     },
     {
       question:
         "When using the orbit writer keys, what is the Braille equivalent for the word 'bird'?",
-      answer: "djlf",
+      answer: "SDDJSDFKSJK",
     },
     {
       question:
         "What is the Braille equivalent for the word 'happy' using the orbit writer keys?",
-      answer: "sldkf",
+      answer: "SKJSSDFJSDFJSDFKK",
     },
     {
       question:
         "Using the orbit writer keys, what is the Braille equivalent for the word 'tree'?",
-      answer: "sdfk",
+      answer: "DFKSDFKSKSK",
     },
     {
       question:
         "When using the orbit writer keys, what is the Braille equivalent for the word 'water'?",
-      answer: "sldfj",
+      answer: "SDJKLSDFKSKSDFK",
     },
     {
       question:
         "What is the Braille equivalent for the word 'flower' using the orbit writer keys?",
-      answer: "sdfjl",
+      answer: "SJDSDJSDKSDJKLSKSDFK",
     },
   ];
 
