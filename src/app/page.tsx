@@ -674,7 +674,8 @@ var value ="language";
                     <div className="text-4xl font-semibold  ml-3 mr-10">
                     {localStorage.getItem('lang') === "english" ? "with Us !" : "मिलकर काम करें"}                    </div>
                     <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
-                      Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all
+                    {localStorage.getItem('lang') === "english" ? " Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all" : "हाथ मिलाओ हमारे साथ, क्योंकि सहयोग से नई चीजों का जन्म होता है। साथ मिलकर हम सबके लिए एक और उज्ज्वल भविष्य बना सकते हैं।"}
+                     
                     </div>
 
        <div className="flex flex-row-reverse mt-7">
