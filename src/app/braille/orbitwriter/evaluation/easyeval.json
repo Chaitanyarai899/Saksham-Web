@@ -1,15 +1,42 @@
 [
-    {
-    "sentence": "The cat chased the mouse."
+  {
+    "question": "Using the orbit writer keys, what is the Braille equivalent for the word 'sun'?",
+    "answer": "sdj"
   },
   {
-    "sentence": "I love to play outside."
+    "question": "What is the Braille equivalent for the word 'dog' using the orbit writer keys?",
+    "answer": "sjl"
   },
   {
-    "sentence": "He runs very fast"
+    "question": "When using the orbit writer keys, what is the Braille equivalent for the word 'cat'?",
+    "answer": "sfj"
   },
   {
-    "sentence":"She reads books often."
+    "question": "What is the Braille equivalent for the word 'house' using the orbit writer keys?",
+    "answer": "skdf"
+  },
+  {
+    "question": "Using the orbit writer keys, what is the Braille equivalent for the word 'book'?",
+    "answer": "dfkl"
+  },
+  {
+    "question": "When using the orbit writer keys, what is the Braille equivalent for the word 'bird'?",
+    "answer": "djlf"
+  },
+  {
+    "question": "What is the Braille equivalent for the word 'happy' using the orbit writer keys?",
+    "answer": "sldkf"
+  },
+  {
+    "question": "Using the orbit writer keys, what is the Braille equivalent for the word 'tree'?",
+    "answer": "sdfk"
+  },
+  {
+    "question": "When using the orbit writer keys, what is the Braille equivalent for the word 'water'?",
+    "answer": "sldfj"
+  },
+  {
+    "question": "What is the Braille equivalent for the word 'flower' using the orbit writer keys?",
+    "answer": "sdfjl"
   }
 ]
-  

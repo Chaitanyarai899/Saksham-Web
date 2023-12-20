@@ -147,6 +147,10 @@ function learn() {
     if (event.target.value === "f" || event.target.value === "j") {
       router.push("/braille/orbitwriter");
     }
+    else if(event.target.value === " "){
+      router.push("/braille/orbitwriter/evaluation");
+
+    }
   };
   var value = "language";
   useOnceCall(() => {
@@ -175,11 +179,12 @@ function learn() {
     console.log("speak");
     if (loaded != "true") {
       speak(
-        "welcome to Saksham, Please press any key with a bump to use Orbit Writer"
+        "welcome to Saksham, Please press any key with a bump to use Orbit Writer or press space to visit orbit writer evaluation"
       );
       speakhindi(
         "सक्षम में आपका स्वागत है, ऑर्बिट राइटर का उपयोग करने के लिए कृपया किसी भी कुंजी को बम्प के साथ दबाएं"
       );
+
       setloaded("true");
     }
   });
@@ -385,9 +390,9 @@ function learn() {
                     quality={100}
                     className="rounded-3xl p-1 mr-2   "
                   />
-                  {localStorage.getItem("lang") === "english"
+                  <Link href="http://localhost:3000/search-mentor">{localStorage.getItem("lang") === "english"
                     ? "Get a mentor"
-                    : "मेंटर प्राप्त करें"}
+                    : "मेंटर प्राप्त करें"}</Link>
                 </Button>
                 <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
                   <Image
@@ -397,10 +402,9 @@ function learn() {
                     height={100}
                     quality={100}
                     className="rounded-3xl p-1 mr-2   "
-                  />
-                  {localStorage.getItem("lang") === "english"
+                  /><Link href="http://localhost:3000/education" >{localStorage.getItem("lang") === "english"
                     ? "RoadMap"
-                    : "रोडमैप"}
+                    : "रोडमैप"}</Link>
                 </Button>
               </div>
               <Button className="bg-transparent my-3 text-black rounded-3xl w-fit px-4 border border-black">
@@ -412,9 +416,9 @@ function learn() {
                   quality={100}
                   className="rounded-3xl p-1 mr-2   "
                 />
-                {localStorage.getItem("lang") === "english"
+                 <Link href="https://65818bb9e552d002e5f9d0cd--celadon-smakager-f009c0.netlify.app/" >{localStorage.getItem("lang") === "english"
                   ? "Practice Sign Language"
-                  : "हस्त भाषा में अभ्यास करें"}
+                  : "हस्त भाषा में अभ्यास करें"}</Link>
               </Button>
             </div>
             <div className="p-1">

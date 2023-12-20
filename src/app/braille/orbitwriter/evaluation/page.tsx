@@ -1,27 +1,9 @@
 "use client";
-import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from "react";
-
-import easyeval from "./easyeval.json";
-import easyeval_hindi from "./easyeval_hindi.json"
-
-
-import jsPDF from 'jspdf';
-import { Button } from "@/components/ui/button";
-
- 
-const frameworks = [
-  {
-    value: "english",
-    label: "english",
-  },
-  {
-    value: "hindi",
-    label: "hindi",
-  },
-  
-]
-
-function useOnceCall(cb : any , condition = true) {
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+function useOnceCall(cb: any, condition = true) {
   const isCalledRef = React.useRef(false);
 
   React.useEffect(() => {
@@ -31,211 +13,142 @@ function useOnceCall(cb : any , condition = true) {
     }
   }, [cb, condition]);
 }
-function Braille() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("english")
-  const [randomString, setRandomString] = useState('');
-  const [result, setResult] = useState('');
+function page() {
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answer, setAnswer] = useState("");
+  const [score, setScore] = useState(0);
 
-  interface Sentence {
-    sentence: string;
-  }
+  const questionsData = [
+    {
+      question:
+        "Using the orbit writer keys, what is the Braille equivalent for the word 'sun'?",
+      answer: "sdj",
+    },
+    {
+      question:
+        "What is the Braille equivalent for the word 'dog' using the orbit writer keys?",
+      answer: "sjl",
+    },
+    {
+      question:
+        "When using the orbit writer keys, what is the Braille equivalent for the word 'cat'?",
+      answer: "sfj",
+    },
+    {
+      question:
+        "What is the Braille equivalent for the word 'house' using the orbit writer keys?",
+      answer: "skdf",
+    },
+    {
+      question:
+        "Using the orbit writer keys, what is the Braille equivalent for the word 'book'?",
+      answer: "dfkl",
+    },
+    {
+      question:
+        "When using the orbit writer keys, what is the Braille equivalent for the word 'bird'?",
+      answer: "djlf",
+    },
+    {
+      question:
+        "What is the Braille equivalent for the word 'happy' using the orbit writer keys?",
+      answer: "sldkf",
+    },
+    {
+      question:
+        "Using the orbit writer keys, what is the Braille equivalent for the word 'tree'?",
+      answer: "sdfk",
+    },
+    {
+      question:
+        "When using the orbit writer keys, what is the Braille equivalent for the word 'water'?",
+      answer: "sldfj",
+    },
+    {
+      question:
+        "What is the Braille equivalent for the word 'flower' using the orbit writer keys?",
+      answer: "sdfjl",
+    },
+  ];
 
-  
-  useOnceCall(()=>{
-    speak("Put your index fingers on the two bumps of keyboard and place two fingers on side of each bump")
-    speakhindi("अपनी तर्जनी को कीबोर्ड के दो उभारों पर रखें और दो उंगलियों को प्रत्येक उभार के किनारे पर रखें")
-
-  })
-
-  const brailleMap: Record<string, string> = {
-    S: "A",
-    SD: "B",
-    SK: "C",
-    SJK: "D",
-    SJD: "F",
-    SJKK: "G",
-    SKJ: "H",
-    DJ: "I",
-    DFK: "J",
-    SDJ: "L",
-    SDF: "M",
-    SDFK: "N",
-    SDK: "O",
-    SDFJ: "P",
-    SDFKJ: "Q",
-    DF: "S",
-    DFDK: "T",
-    SL: "U",
-    SDFL: "V",
-    SDJKL: "W",
-    SDFKL: "X",
-    SDFKK: "Y",
-    SDKK: "Z",
-  };
-  const brailleMapHindi: Record<string, string> =   {
-    "S": "अ",
-    "DJ": "इ",
-    "FK": "ई",
-    "SFL": "उ",
-    "SK": "ए",
-    "FJ": "ऐ",
-    "SFJ": "ओ",
-    "DJL": "औ",
-    "SF": "क",
-    "K": "क़",
-    "DJFKL": "ख",
-    "DJFKJ": "ख़",
-    "SDKL": "घ",
-    "FJL": "ङ",
-    "SJ": "च",
-    "SKL": "छ",
-    "DKFJ": "ज",
-    "SFJKL": "ज़",
-    "FJKL": "झ",
-    "DK": "ञ",
-    "DFJKL": "ट",
-    "DKFJL": "ठ",
-    "DJFJL": "ड",
-    "SDFJKL": "ढ",
-    "DFJK": "त",
-    "SJFJL": "थ",
-    "SJK": "द",
-    "DFJL": "ध",
-    "SFJK": "न",
-    "SDFJ": "प",
-    "DFK": "फ",
-    "DJF": "फ़",
-    "SD": "ब",
-    "JK": "भ",
-    "SDFK": "र",
-    "SDF": "ल",
-    "SDFJL": "व",
-    "SJKL": "श",
-    "SDK": "ह",
-    "SDFJK": "ॐ",
-    "SDFJKLI": "त्र",
-    "SKLJ": "क्ष",
-    "DJFJKL": "ड़",
-    "D": "ऽ",
-    "J": "्"
-  } 
-  const [inputValue, setInputValue] = useState("");
-  const [outputValue, setOutputValue] = useState("");
   useEffect(() => {
-    // Fetch a random string from the JSON file on initial render
-    const randomIndex = Math.floor(Math.random() * easyeval.length);
-    setRandomString(easyeval[randomIndex].sentence);
+    // @ts-ignore
+    setQuestions(questionsData); // Randomly select 5 questions
   }, []);
+  useOnceCall(() => {
+    speak(questionsData[0].question)
+    });
 
-  
- const speakhindi =(text : any) => {
-  const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(text);
-
-      utterance.lang='hi-IN'; 
-       utterance.rate = 0.8;
-  
-    synth.speak(utterance);
-
- }
+  const handleAnswerSubmit = () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    // @ts-ignore
+    if (answer.toLowerCase() === currentQuestion.answer.toLowerCase()) {
+      setScore(score + 1);
+    }
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setAnswer("");
+  };
   const speak = (text: any) => {
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
-    if(value == "hindi"){
-      utterance.lang='hi-IN'; 
-       utterance.rate = 0.8;
-    }
+   
     synth.speak(utterance);
   };
+  useEffect(() => {
+    // Store the score in local storage after completing the test
+    if (currentQuestionIndex === questions.length) {
+      // @ts-ignore
+      const scores = JSON.parse(localStorage.getItem("quizScores")) || [];
+      localStorage.setItem("quizScores", JSON.stringify([...scores, score]));
+    }
+   
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault()
-    const input = event.target.value.toUpperCase();
-    setInputValue(input);
-  };
+  }, [currentQuestionIndex, questions.length, score]);
+  useEffect(() => {
+    if (currentQuestionIndex < questions.length && currentQuestionIndex==0 ) {
+      speak(questionsData[currentQuestionIndex].question);
+      console.log(questionsData[currentQuestionIndex + 1].question);
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if(localStorage.getItem("lang") == "english"){
-      var a = brailleMap[inputValue]
     }
-    else{
-      var a = brailleMapHindi[inputValue]
-    }
-    if (event.key === "Enter") {
-      if (a) {
-        setOutputValue((prevValue) => prevValue + a);
-        setInputValue("");
-        speak(a);
-      }
-    } else if (event.key === " ") {
-      event.preventDefault();
-      setOutputValue((prevValue) => prevValue.trim() + " ");
-      speak("space");
-    } else if (event.key === "Backspace" ) {
-      // Remove the last character from outputValue
-      setOutputValue((prevValue) => prevValue.slice(0, -1));
-    }
-    else if (event.key.toLowerCase() === "control") {
-      // Remove the last character from outputValue
-      setInputValue("");
-    }
-  
-  };
-  const compareStrings = () => {
-    if (inputValue.trim().toLowerCase() === randomString.toLowerCase()) {
-      setResult('Matched!');
-    } else {
-      setResult('Not matched. Try again!');
-    }
-  };
-  
-const handlecheck =()=>{
+    else if( currentQuestionIndex < questions.length  ){
+      speak(questionsData[currentQuestionIndex].question);
+      console.log(questionsData[currentQuestionIndex].question);
 
-}
-
+    }
+  }, [currentQuestionIndex, questions]);
   return (
-    <div id="main-container" className="divide-y-[3px]  divide-gray-200">
-      <div className=" mt-4  flex flex-row justify-center">
-        <p className="text-2xl font-semibold font-serif">Online Orbit Writer Evaluation</p>
-      </div>  
-      <div
-        className="h-full grid place-content-start m-4 col-span-4"
-        id="input-box"
-      >
-        <label
-          htmlFor="brailleInput"
-          className="p-2 font-semibold tracking-wide"
-        >
-          Enter Braille Key : 
-        </label>
-        <input
-          id="brailleInput"
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyDown= {handleKeyDown}
-          className="w-[32em] mt-3 p-4 rounded-md border-4 border-black/20"
-        />
-        {outputValue && (
-          <><div>
-            <p className="font-bold text-xl text-stone-900/80 border-4 p-2 rounded-lg border-black tracking-wider mt-3">
-              Continuous Word :{" "}
-              <p className="inline px-4 rounded-lg py-1 text-rose-600 mx-2">
-                {outputValue}
-              </p>
-            </p>
-          </div><Button onClick={compareStrings}>
-            submit
-            </Button>
-            {result && <p>{result}</p>}</>
+    <MaxWidthWrapper>
+      <div className="m-8 p-4 bg-gray-200 rounded shadow-md">
+        {currentQuestionIndex < questions.length ? (
+          <div>
+            <h1 className="text-2xl font-semibold mb-4">
+              {/* @ts-ignore */}
+              {questions[currentQuestionIndex].question}
+            </h1>
+            <input
+              type="text"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              className="border p-2 mb-4"
+              placeholder="Enter your answer"
+            />
+            <button
+              onClick={handleAnswerSubmit}
+              className="bg-rose-500 text-white px-4 py-2 rounded"
+            >
+              Submit
+            </button>
+          </div>
+        ) : (
+          <div>
+            <h1 className="text-2xl font-semibold mb-4">Quiz Completed!</h1>
+            <p>Your Score: {score}</p>
+          </div>
         )}
       </div>
-      {localStorage.getItem("lang") == "english" ? 
-      <div>  {randomString}
-              </div> : <div> {randomString}</div> }
-    </div>
+    </MaxWidthWrapper>
   );
 }
 
-export default Braille;
+export default page;
