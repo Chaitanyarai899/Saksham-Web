@@ -1,28 +1,22 @@
 "use client";
-import React, {
-  useState,
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect,
-  useRef,
-} from "react";
+import React ,{ useState, ChangeEvent, KeyboardEvent, useEffect, useRef }  from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ChevronsUpDown } from "lucide-react";
-
+import { Check, ChevronsUpDown } from "lucide-react"
+ 
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command";
+} from "@/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import useEffectOnce from "use-effect-once";
+} from "@/components/ui/popover"
+import useEffectOnce from 'use-effect-once';
 import {
   Card,
   CardContent,
@@ -40,7 +34,8 @@ const frameworks = [
     value: "hindi",
     label: "hindi",
   },
-];
+  
+]
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -104,7 +99,7 @@ function onSubmit(values: z.infer<typeof formSchema>) {
   // ✅ This will be type-safe and validated.
   console.log(values);
 }
-function useOnceCall(cb: any, condition = true) {
+function useOnceCall(cb : any , condition = true) {
   const isCalledRef = React.useRef(false);
 
   React.useEffect(() => {
@@ -124,66 +119,68 @@ function learn() {
   const [loaded, setloaded] = useState<string>("");
   const inputRef = useRef(null);
   // const speak = (text: any) => {
-  //   console.log("speaking")
+    //   console.log("speaking")
 
-  //     const synth = window.speechSynthesis;
-  //     const utterance = new SpeechSynthesisUtterance(text);
-  //     if(value == "hindi"){
-  //       utterance.lang='hi-IN';
-  //        utterance.rate = 0.8;
-  //     }
-  //     synth.speak(utterance);
-  //   };
-  const [v, setV] = useState<string>("");
-  const router = useRouter();
-  useEffect(() => {
-    if (inputRef.current) {
-      // @ts-ignore
-      inputRef.current.focus();
-    }
-  }, []);
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setV(event.target.value);
-    if (event.target.value === "f" || event.target.value === "j") {
-      router.push("/braille/orbitwriter");
-    }
-  };
-  var value = "language";
-  useOnceCall(() => {
-    const speak = (text: any) => {
-      console.log("speaking");
-      const synth = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(text);
-
-      synth.speak(utterance);
-      if (localStorage) {
-        localStorage.setItem("lang", localStorage.getItem("lang") || "hindi");
+    //     const synth = window.speechSynthesis;
+    //     const utterance = new SpeechSynthesisUtterance(text);
+    //     if(value == "hindi"){
+    //       utterance.lang='hi-IN'; 
+    //        utterance.rate = 0.8;
+    //     }
+    //     synth.speak(utterance);
+    //   };
+    const [v, setV] = useState<string>("")
+    const router = useRouter();
+    useEffect(()=> {
+      if(inputRef.current) {
+        // @ts-ignore 
+        inputRef.current.focus();
       }
-      localStorage.getItem("lang");
-    };
-    const speakhindi = (text: any) => {
-      console.log("speaking");
-      const synth = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(text);
-
-      utterance.lang = "hi-IN";
-      utterance.rate = 0.8;
-
-      synth.speak(utterance);
-    };
-
-    console.log("speak");
-    if (loaded != "true") {
-      speak(
-        "welcome to Saksham, Please press any key with a bump to use Orbit Writer"
-      );
-      speakhindi(
-        "सक्षम में आपका स्वागत है, ऑर्बिट राइटर का उपयोग करने के लिए कृपया किसी भी कुंजी को बम्प के साथ दबाएं"
-      );
-      setloaded("true");
+    }, [])
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setV(event.target.value);
+      if(event.target.value === "f" || event.target.value === "j") {
+        router.push("/braille/orbitwriter")
+      }
     }
-  });
-  const [open, setOpen] = React.useState(false);
+var value ="language";
+    useOnceCall(() => {
+
+      const speak = (text: any) => {
+        console.log("speaking");
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+
+      
+         
+        
+        synth.speak(utterance);
+        if(localStorage){
+          localStorage.setItem("lang", localStorage.getItem("lang") || "english");
+        }
+        localStorage.getItem("lang");
+      };
+      const speakhindi = (text: any) => {
+        console.log("speaking");
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+      
+          utterance.lang = 'hi-IN'; 
+          utterance.rate = 0.8;
+        
+        synth.speak(utterance);
+      };
+    
+      console.log("speak");
+      if (loaded !="true") {
+        speak("welcome to Saksham, Please press any key with a bump to use Orbit Writer");
+        speakhindi("सक्षम में आपका स्वागत है, ऑर्बिट राइटर का उपयोग करने के लिए कृपया किसी भी कुंजी को बम्प के साथ दबाएं");
+        setloaded("true");
+      }
+      
+    
+    });
+    const [open, setOpen] = React.useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -208,83 +205,62 @@ function learn() {
     <>
       <div className="p-2 flex flex-row h-[60vh] mb-20">
         <form className="w-[10px] bg-grainy">
-          <input
-            type="text"
-            className="text-white"
-            value={v}
-            ref={inputRef}
-            onChange={handleChange}
-          ></input>
+          <input type="text" className="text-white" value={v} ref={inputRef} onChange={handleChange}></input>
         </form>
         <div className="w-[50%]">
           <div className="py-auto px-auto my-auto flex flex-col ">
             <div className="py-auto px-auto mx-auto my-[15vh] text-5xl font-bold">
-              {localStorage.getItem("lang") === "english"
-                ? "Enspire. Empower."
-                : "प्रेरित करें। सशक्त करें।"}
-              <div className="my-2">
-                {localStorage.getItem("lang") === "english"
-                  ? "Educate."
-                  : "शिक्षा दें।"}
-              </div>
+              {localStorage.getItem('lang') === "english" ? "Enspire. Empower." : "प्रेरित करें। सशक्त करें।"} 
+              <div className="my-2">{localStorage.getItem('lang') === "english" ? "Educate." : "शिक्षा दें।"}</div>
               <div className="font-normal mt-3 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
-                {localStorage.getItem("lang") === "english"
-                  ? "It's not about being Disabled,"
-                  : "पंख उठाओ, सीख जगाओ,"}
+                {localStorage.getItem('lang') === "english" ? "It's not about being Disabled," : "पंख उठाओ, सीख जगाओ,"}         
               </div>
               <div className="font-normal mt-1 text-2xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]">
-                {localStorage.getItem("lang") === "english"
-                  ? "It's about being सaksham"
-                  : "सक्षम बनो, मुस्कुराओ."}
+              {localStorage.getItem('lang') === "english" ? "It's about being सaksham" : "सक्षम बनो, मुस्कुराओ."} 
+                
               </div>
               <div>
-                <Popover open={open} onOpenChange={setOpen}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      aria-expanded={open}
-                      className="w-[200px] justify-between"
-                    >
-                      {value
-                        ? frameworks.find(
-                            (framework) => framework.value === value
-                          )?.label
-                        : value}
-                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-[200px] p-0">
-                    <Command>
-                      <CommandGroup>
-                        {frameworks.map((framework) => (
-                          <CommandItem
-                            key={framework.value}
-                            value={framework.value}
-                            onSelect={(currentValue) => {
-                              localStorage.setItem(
-                                "lang",
-                                currentValue === value ? "" : currentValue
-                              );
-                              setOpen(false);
-                              window.location.reload();
-                            }}
-                          >
-                            <Check
-                              className={cn(
-                                "mr-2 h-4 w-4",
-                                value === framework.value
-                                  ? "opacity-100"
-                                  : "opacity-0"
-                              )}
-                            />
-                            {framework.label}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
+              <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-[200px] justify-between"
+        >
+          {value
+            ? frameworks.find((framework) => framework.value === value)?.label
+            : value}
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-[200px] p-0">
+        <Command>
+          
+          <CommandGroup>
+            {frameworks.map((framework) => (
+              <CommandItem
+                key={framework.value}
+                value={framework.value}
+                onSelect={(currentValue) => {
+                  localStorage.setItem('lang', currentValue === value ? '' : currentValue);
+                  setOpen(false)
+                  window.location.reload();
+                }}
+              >
+                <Check
+                  className={cn(
+                    "mr-2 h-4 w-4",
+                    value === framework.value ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                {framework.label}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </Command>
+      </PopoverContent>
+    </Popover>
               </div>
             </div>
           </div>
@@ -345,26 +321,19 @@ function learn() {
           <div className=" flex flex-row p-4">
             <div className="p-1 ">
               <div className="text-4xl font-semibold mt-9  ml-3 pr-[6vw]">
-                {localStorage.getItem("lang") === "english"
-                  ? "Learn Beyond"
-                  : "सीखो, किसी भी "}
-              </div>
+              {localStorage.getItem('lang') === "english" ? "Learn Beyond" : "सीखो, किसी भी "}            
+                </div>
 
               <div className="text-4xl font-semibold  ml-3 mr-10">
-                {localStorage.getItem("lang") === "english"
-                  ? "any Restrictins"
-                  : "प्रतिबंध से आगे"}
+              {localStorage.getItem('lang') === "english" ? "any Restrictins" : "प्रतिबंध से आगे"}
               </div>
               <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
-                {localStorage.getItem("lang") === "english"
-                  ? "We Provide you with the Tools you need and the benefits you deserve !"
-                  : "हम आपको वह साधन प्रदान करते हैं जिन्हें आपकी आवश्यकता है और जो लाभ"}
+              {localStorage.getItem('lang') === "english" ? "We Provide you with the Tools you need and the benefits you deserve !" : "हम आपको वह साधन प्रदान करते हैं जिन्हें आपकी आवश्यकता है और जो लाभ"} 
+
               </div>
               <div className="text-xl font-normal mr-10 mt-1 ml-2 ">
-                {localStorage.getItem("lang") === "english"
-                  ? "To facilitate inclusions and make everyone Saksham.!"
-                  : "आपको स्वीकार करने के योग्य हैं"}
-              </div>
+              {localStorage.getItem('lang') === "english" ? "To facilitate inclusions and make everyone Saksham.!" : "आपको स्वीकार करने के योग्य हैं"} 
+              </div> 
 
               <div className="flex flex-row mt-7">
                 <Button className="bg-transparent mt-5 text-black mr-1 rounded-3xl w-fit border border-black">
@@ -376,9 +345,7 @@ function learn() {
                     quality={100}
                     className="rounded-3xl p-1 mr-2   "
                   />
-                  {localStorage.getItem("lang") === "english"
-                    ? "Get a mentor"
-                    : "मेंटर प्राप्त करें"}
+              {localStorage.getItem('lang') === "english" ? "Get a mentor" : "मेंटर प्राप्त करें"}            
                 </Button>
                 <Button className="bg-transparent mt-5 text-black mx-1 rounded-3xl w-fit border border-black">
                   <Image
@@ -389,9 +356,7 @@ function learn() {
                     quality={100}
                     className="rounded-3xl p-1 mr-2   "
                   />
-                  {localStorage.getItem("lang") === "english"
-                    ? "RoadMap"
-                    : "रोडमैप"}
+              {localStorage.getItem('lang') === "english" ? "RoadMap" : "रोडमैप"}            
                 </Button>
               </div>
               <Button className="bg-transparent my-3 text-black rounded-3xl w-fit px-4 border border-black">
@@ -403,9 +368,7 @@ function learn() {
                   quality={100}
                   className="rounded-3xl p-1 mr-2   "
                 />
-                {localStorage.getItem("lang") === "english"
-                  ? "Practice Sign Language"
-                  : "हस्त भाषा में अभ्यास करें"}
+              {localStorage.getItem('lang') === "english" ? "Practice Sign Language" : "हस्त भाषा में अभ्यास करें"}            
               </Button>
             </div>
             <div className="p-1">
@@ -425,14 +388,12 @@ function learn() {
       <div className="p-2 mt-[68vh] ">
         <div className="flex flex-col justify-center mt-2">
           <div className="font-semibold font-mono tracking-wide text-2xl text-center  mx-15 my-auto">
-            {localStorage.getItem("lang") === "english"
-              ? " The Features are endless,"
-              : "सुविधाएँ अनंत हैं,"}
+           {localStorage.getItem('lang') === "english" ? " The Features are endless," : "सुविधाएँ अनंत हैं,"}            
+
           </div>
           <div className="font-normal font-semibold text-xl mt-1  text-center my-auto">
-            {localStorage.getItem("lang") === "english"
-              ? "So are the opportunities"
-              : "जैसे ही अवसर।"}{" "}
+          {localStorage.getItem('lang') === "english" ? "So are the opportunities" : "जैसे ही अवसर।"}  
+            {" "}
           </div>
         </div>
 
@@ -571,14 +532,10 @@ function learn() {
         <MaxWidthWrapper>
           <div className="text-center my-16">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {localStorage.getItem("lang") === "english"
-                ? " Personalized Mentor Support"
-                : "व्यक्तिगत मेंटर समर्थन"}
+              {localStorage.getItem('lang') === "english" ? " Personalized Mentor Support" : "व्यक्तिगत मेंटर समर्थन"}
             </h2>
             <p className="mt-2 text-lg text-gray-500">
-              {localStorage.getItem("lang") === "english"
-                ? "Select a mentor from a pool of mentors, experts & get 1-on-1 mentorship!"
-                : "मेंटर को चुनें जो कि मेंटर्स और विशेषज्ञों के समृद्धि से भरपूर समूह से हैं, और 1-on-1 मेंटरशिप प्राप्त करें!"}
+              {localStorage.getItem('lang') === "english" ? "Select a mentor from a pool of mentors, experts & get 1-on-1 mentorship!" : "मेंटर को चुनें जो कि मेंटर्स और विशेषज्ञों के समृद्धि से भरपूर समूह से हैं, और 1-on-1 मेंटरशिप प्राप्त करें!"}
             </p>
           </div>
 
@@ -594,25 +551,21 @@ function learn() {
                 <span className="">
                   <Search className="h-4 w-4" />
                 </span>{" "}
-                {localStorage.getItem("lang") === "english"
-                  ? "Find A Mentor"
-                  : "एक मेंटर ढूंढें"}
+                {localStorage.getItem('lang') === "english" ? "Find A Mentor" : "एक मेंटर ढूंढें"}
               </Link>
+
+                  
 
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="ghost" className="border border-rose-600">
-                    {localStorage.getItem("lang") === "english"
-                      ? "Become A mentor"
-                      : "मेंटर बनें"}
+                    {localStorage.getItem('lang') === "english" ? "Become A mentor" : "मेंटर बनें"}
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
                     <AlertDialogTitle>
-                      {localStorage.getItem("lang") === "english"
-                        ? "Become A Mentor Today"
-                        : "आज ही मेंटर बनें"}
+                      {localStorage.getItem('lang') === "english" ? "Become A Mentor Today" : "आज ही मेंटर बनें"}
                     </AlertDialogTitle>
                     <AlertDialogDescription>
                       <Form {...form}>
@@ -715,102 +668,93 @@ function learn() {
                 <div className=" flex flex-row-reverse justify-right p-4">
                   <div className="p-1 text-right">
                     <div className="text-4xl font-semibold mt-9 pr-[3vw]">
-                      {localStorage.getItem("lang") === "english"
-                        ? "Collaborate"
-                        : "हमारे साथ "}
+                    {localStorage.getItem('lang') === "english" ? "Collaborate" : "हमारे साथ "}
                     </div>
 
                     <div className="text-4xl font-semibold  ml-3 mr-10">
-                      {localStorage.getItem("lang") === "english"
-                        ? "with Us !"
-                        : "मिलकर काम करें"}{" "}
-                    </div>
+                    {localStorage.getItem('lang') === "english" ? "with Us !" : "मिलकर काम करें"}                    </div>
                     <div className="text-xl font-normal mr-10 mt-9 ml-2 ">
-                      Join hands with us, as collaboration sparks innovation.
-                      Together, we can build a brighter future for all
+                      Join hands with us, as collaboration sparks innovation. Together, we can build a brighter future for all
                     </div>
 
-                    <div className="flex flex-row-reverse mt-7">
-                      {/* NGO Sign Up Form */}
-                      <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            className="mr-8 border border-black"
+       <div className="flex flex-row-reverse mt-7">
+              {/* NGO Sign Up Form */}
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="ghost" className="mr-8 border border-black">
+                    Sign Up as an NGO
+                  </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>NGO Sign Up</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        <Form {...ngoForm}>
+                          <form
+                            onSubmit={ngoForm.handleSubmit(onNGOSubmit)}
+                            className="text-left space-y-8"
                           >
-                            Sign Up as an NGO
-                          </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                          <AlertDialogHeader>
-                            <AlertDialogTitle>NGO Sign Up</AlertDialogTitle>
-                            <AlertDialogDescription>
-                              <Form {...ngoForm}>
-                                <form
-                                  onSubmit={ngoForm.handleSubmit(onNGOSubmit)}
-                                  className="text-left space-y-8"
-                                >
-                                  <FormField
-                                    control={ngoForm.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                      <FormItem>
-                                        <FormLabel>Name</FormLabel>
-                                        <FormControl>
-                                          <Input
-                                            placeholder="Enter NGO Name"
-                                            {...field}
-                                          />
-                                        </FormControl>
-                                        <FormMessage />
-                                      </FormItem>
-                                    )}
-                                  />
-                                  <FormField
-                                    control={ngoForm.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                      <FormItem>
-                                        <FormLabel>Email</FormLabel>
-                                        <FormControl>
-                                          <Input
-                                            placeholder="Enter NGO Email"
-                                            {...field}
-                                          />
-                                        </FormControl>
-                                        <FormMessage />
-                                      </FormItem>
-                                    )}
-                                  />
-                                  <FormField
-                                    control={ngoForm.control}
-                                    name="phone"
-                                    render={({ field }) => (
-                                      <FormItem>
-                                        <FormLabel>Phone Number</FormLabel>
-                                        <FormControl>
-                                          <Input
-                                            placeholder="Enter NGO Phone Number"
-                                            {...field}
-                                          />
-                                        </FormControl>
-                                        <FormMessage />
-                                      </FormItem>
-                                    )}
-                                  />
-                                  <Button className="w-full" type="submit">
-                                    Submit
-                                  </Button>
-                                </form>
-                              </Form>
-                            </AlertDialogDescription>
-                          </AlertDialogHeader>
-                          <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          </AlertDialogFooter>
-                        </AlertDialogContent>
-                      </AlertDialog>
-                    </div>
+                            <FormField
+                              control={ngoForm.control}
+                              name="name"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Name</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Name"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={ngoForm.control}
+                              name="email"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Email</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Email"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={ngoForm.control}
+                              name="phone"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Phone Number</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Enter NGO Phone Number"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <Button className="w-full" type="submit">
+                              Submit
+                            </Button>
+                          </form>
+                        </Form>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+            </div>
                   </div>
                   <div className="p-1">
                     <Image
@@ -833,3 +777,4 @@ function learn() {
 }
 
 export default learn;
+

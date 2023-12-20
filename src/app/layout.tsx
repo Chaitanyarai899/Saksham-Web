@@ -20,13 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="hi" className="h-full">
+      <html lang="hi" className="h-full" suppressHydrationWarning>
         <body
           className={cn(
             "relative h-full font-sans antialiased grainy",
             inter.className
           )}
-          suppressHydrationWarning
+          
         >
           <main className="relative flex flex-col min-h-screen">
             <Navbar />
