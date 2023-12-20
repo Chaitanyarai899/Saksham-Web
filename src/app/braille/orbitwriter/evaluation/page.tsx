@@ -3,6 +3,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import easyeval_hindi from "./easyeval_hindi.json";
 function useOnceCall(cb: any, condition = true) {
   const isCalledRef = React.useRef(false);
 
@@ -14,11 +15,11 @@ function useOnceCall(cb: any, condition = true) {
   }, [cb, condition]);
 }
 function page() {
-  const [questions, setQuestions] = useState([]);
+const [questions, setQuestions] = useState<{ question: string; answer: string; }[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
-
+  // const [questions, setQuestions] = useState<{ question: string; answer: string; }[]>([]);
   const questionsData = [
     {
       question:
@@ -73,9 +74,13 @@ function page() {
   ];
 
   useEffect(() => {
-    // @ts-ignore
-    setQuestions(questionsData); // Randomly select 5 questions
+    if (localStorage.getItem("lang") === "english") {
+      setQuestions(questionsData as { question: string; answer: string; }[]);
+    } else {
+      setQuestions(easyeval_hindi as { question: string; answer: string; }[]);
+    }
   }, []);
+  
   useOnceCall(() => {
     speak(questionsData[0].question)
     });
