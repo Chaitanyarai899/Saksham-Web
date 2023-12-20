@@ -40,7 +40,7 @@ function MainNav() {
           </Link>
         )} 
         {typeof localStorage !== 'undefined' && localStorage.getItem('lang') && (
-        <Link href="https://65818bb9e552d002e5f9d0cd--celadon-smakager-f009c0.netlify.app/">
+        <Link href="https://6582dc39b2a7d706984e8d7d--cool-bublanina-4c0c2c.netlify.app/">
           <li className="px-3">
             {localStorage.getItem('lang') === 'english'
               ? 'Playground'
