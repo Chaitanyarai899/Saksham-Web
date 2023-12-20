@@ -1,34 +1,12 @@
 "use client";
 import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from "react";
 
+import easyeval from "./easyeval.json";
+import easyeval_hindi from "./easyeval_hindi.json"
 
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
+
 import jsPDF from 'jspdf';
-import { Check, ChevronsUpDown } from "lucide-react"
- 
-import { cn } from "@/lib/utils"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+
  
 const frameworks = [
   {
@@ -249,9 +227,8 @@ function Braille() {
         )}
       </div>
       {localStorage.getItem("lang") == "english" ? 
-      <div>
-english
-      </div> : <div>hindi</div> }
+      <div> {easyeval[Math.floor(Math.random() * 11)].sentence}
+              </div> : <div>{easyeval_hindi[Math.floor(Math.random() * 11)].sentence}</div> }
     </div>
   );
 }
