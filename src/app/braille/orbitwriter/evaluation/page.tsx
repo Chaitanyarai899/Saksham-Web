@@ -6,6 +6,7 @@ import easyeval_hindi from "./easyeval_hindi.json"
 
 
 import jsPDF from 'jspdf';
+import { Button } from "@/components/ui/button";
 
  
 const frameworks = [
@@ -33,17 +34,14 @@ function useOnceCall(cb : any , condition = true) {
 function Braille() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("english")
+  const [randomString, setRandomString] = useState('');
+  const [result, setResult] = useState('');
 
-  interface BrailleItem {
-    character: string;
-    brailleCode: string;
-    string: string;
+  interface Sentence {
+    sentence: string;
   }
-  const [tableData, setTableData] = useState<BrailleItem[]>([]);
-  useEffect(() => {
-  console.log("use effect")
 
-  }, []);
+  
   useOnceCall(()=>{
     speak("Put your index fingers on the two bumps of keyboard and place two fingers on side of each bump")
     speakhindi("अपनी तर्जनी को कीबोर्ड के दो उभारों पर रखें और दो उंगलियों को प्रत्येक उभार के किनारे पर रखें")
@@ -124,20 +122,13 @@ function Braille() {
   } 
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("");
+  useEffect(() => {
+    // Fetch a random string from the JSON file on initial render
+    const randomIndex = Math.floor(Math.random() * easyeval.length);
+    setRandomString(easyeval[randomIndex].sentence);
+  }, []);
 
-  const downloadAsDoc = () => {
-    const element = document.createElement("a");
-    const file = new Blob([outputValue], { type: "text/plain" });
-    element.href = URL.createObjectURL(file);
-    element.download = "Saksham_document.doc";
-    document.body.appendChild(element); // Required for this to work in Firefox
-    element.click();
-  };
-  const downloadAsPdf = () => {
-    const pdf = new jsPDF();
-    pdf.text(outputValue, 10, 10); // Add your outputValue text to the PDF
-    pdf.save('saksham_pdfdocument.pdf');
-  };
+  
  const speakhindi =(text : any) => {
   const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
@@ -159,6 +150,7 @@ function Braille() {
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
     const input = event.target.value.toUpperCase();
     setInputValue(input);
   };
@@ -190,7 +182,17 @@ function Braille() {
     }
   
   };
+  const compareStrings = () => {
+    if (inputValue.trim().toLowerCase() === randomString.toLowerCase()) {
+      setResult('Matched!');
+    } else {
+      setResult('Not matched. Try again!');
+    }
+  };
+  
+const handlecheck =()=>{
 
+}
 
   return (
     <div id="main-container" className="divide-y-[3px]  divide-gray-200">
@@ -216,19 +218,22 @@ function Braille() {
           className="w-[32em] mt-3 p-4 rounded-md border-4 border-black/20"
         />
         {outputValue && (
-          <div>
+          <><div>
             <p className="font-bold text-xl text-stone-900/80 border-4 p-2 rounded-lg border-black tracking-wider mt-3">
               Continuous Word :{" "}
               <p className="inline px-4 rounded-lg py-1 text-rose-600 mx-2">
                 {outputValue}
               </p>
             </p>
-          </div>
+          </div><Button onClick={compareStrings}>
+            submit
+            </Button>
+            {result && <p>{result}</p>}</>
         )}
       </div>
       {localStorage.getItem("lang") == "english" ? 
-      <div> {easyeval[Math.floor(Math.random() * 11)].sentence}
-              </div> : <div>{easyeval_hindi[Math.floor(Math.random() * 11)].sentence}</div> }
+      <div>  {randomString}
+              </div> : <div> {randomString}</div> }
     </div>
   );
 }
