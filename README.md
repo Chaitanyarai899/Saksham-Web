@@ -2,8 +2,6 @@
 
 The project aims to be a one stop solution for specially abled individuals as aims to teach sign language via utility of deep learning and computer vision.
 
-This project promulgates a `pipeline` that `trains` an end-to-end predection model for aircraft maintanace using inputs, experiments by logging the model artifacts, parameters and metrics, `build` them as a web application followed by `dockerizing` them into a container and deploys the application containing trained model artifacts as a docker container into the cloud server with `CI/CD` integration, automated tests and releases.
-
 ## Languages and Tools
 
 <div align="">
