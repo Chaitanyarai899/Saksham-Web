@@ -1,0 +1,24 @@
+{
+  "name": "Saksham Playground",
+  "short_name": "Saksham Playground",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Learn ASL",
+  "lang": "English",
+  "dir": "auto",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "orientation": "any",
+  "icons": [
+  
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Saksham Playground",
+      "url": "https://sakshamai.com",
+      "description": "Saksham American Sign language Playground"
+    }
+  ]
+}

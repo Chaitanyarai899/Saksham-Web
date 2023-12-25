@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css" ></link>
+    <title>GestureAcademy - Learn ASL practically.</title>
+    <link rel="icon" href="/assets/logo/kawaii-panda.png" />
+    <meta name="description" content="GestureAcademy is a platform where users can practically learn American Sign Language using machine learning, games and access videos for over 20,000+ ASL phrases."/>
+    <link rel="canonical" href="https://gestureacademy.webdrip.in/"/>
+    <meta property="og:title" content="GestureAcademy: Learn ASL practically"/>
+    <meta property="og:description" content="GestureAcademy is a platform where users can practically learn American Sign Language using machine learning, games and access videos for over 20,000+ ASL phrases."/>
+    
+    
+    
+    <meta property="og:site_name" content="GestureAcademy"/>
+    <meta property="og:type" content="ASL,Education,Courses,Learning,Machine Learning, ML, AI, Deaf Community,deaf, sign language"/>
+    <meta name="language" content="EN"/>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="author" content="Narottam Sahu, Avirat Sudam, Aman Shrivastava, Prathamesh Raut"/>
+    
+    <script async defer data-website-id="b315f6d5-10e5-4c26-a781-d3113658dae7" src="https://analytics.webdrip.in/umami.js"></script>
+</head>
+<body class="bg-[#ECF3F5]" >
+    
+
+<section class="max-w-7xl mx-auto px-4 " >
+    <h1 class="py-6 rubik text-4xl font-bold" >Saksham Sign language Playground</h1>
+    
+   
+   <section class="max-w-7xl mx-auto px-4">
+    <!-- Other content -->
+
+    <h1 class="py-6 rubik text-4xl font-bold">Your Progress</h1>
+    <div style="background-color: #ddd; border-radius: 10px;">
+        <div id="quiz-progress" style="height: 20px; background-color: green; width: 0;"></div>
+    </div>
+
+    <h1 class="py-6 rubik text-4xl font-bold">Your Quiz Status</h1>
+    <table id="quiz-status-table" style="border: 1px solid black; border-collapse: collapse;">
+        <tr>
+            <th style="padding: 5px;">Quiz</th>
+            <th style="padding: 5px;">Status</th>
+        </tr>
+        <tr>
+            <td style="padding: 5px;">A - F</td>
+            <td id="QuizCompletionA_F" style="padding: 5px;"></td>
+        </tr>
+        <tr>
+            <td style="padding: 5px;">G - K</td>
+            <td id="QuizCompletionG_K" style="padding: 5px;"></td>
+        </tr>
+        <tr>
+            <td style="padding: 5px;">L - P</td>
+            <td id="QuizCompletionL_P" style="padding: 5px;"></td>
+        </tr>
+    </table>
+</section>
+
+<script>
+    window.onload = function () {
+        let completedQuizCount = 0;
+        let totalQuizCount = 5; // Total number of quizzes
+
+        // Iterate over all quizzes
+        ["A_F", "G_K", "L_P",].forEach((quiz) => {
+            const completionMessage = localStorage.getItem(`QuizCompletion${quiz}`);
+            // If a completion message exists, increment the number of completed quizzes
+            if (completionMessage) {
+                document.getElementById(`QuizCompletion${quiz}`).innerText = completionMessage;
+                completedQuizCount++;
+            }
+        });
+
+        // Calculate the progress (in percent)
+        let progress = (completedQuizCount / totalQuizCount) * 100;
+
+        // Set the progress bar
+        let progressBar = document.getElementById('quiz-progress');
+        progressBar.style.width = `${progress}%`;
+
+        // Display progress text
+        let progressText = document.createElement('div');
+        progressText.innerHTML = `${completedQuizCount}/${totalQuizCount}`;
+        progressText.style.textAlign = 'center';
+        document.getElementById('quiz-progress').appendChild(progressText);
+    };
+</script>
+
+    <h1 class="py-6 rubik text-4xl font-bold" >Lets Begin</h1>
+    
+    <div class="flex flex-wrap gap-4 mb-8">
+        
+        
+        
+        
+<a href="/app/playNumbers/index.html" class="block p-6 max-w-xl bg-[#A0A6FF] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Learn Numbers</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn numbers from 0-10 in  chronological order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/hell-yeah.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn numbers from 0-10 in  chronological order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/playAlphabet-A-F/index.html" class="block p-6 max-w-xl bg-[#72CAC3] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Learn Alphabets A-F</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from A-F in  chronological order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/ABC.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from A-F in  chronological order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/alphabetQuiz-A-F/index.html" class="block p-6 max-w-xl bg-[#72CAC3] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Alphabets Quiz A-F</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from A-F in random order with the help of artificial intelligence quiz.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/ABC.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from A-F in random order with the help of artificial intelligence quiz.
+    </p>
+</a>
+
+
+        
+<a href="/app/playAlphabet-G-K/index.html" class="block p-6 max-w-xl bg-[#F9DBBB] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Learn Alphabets G-K</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from G-K in  chronological order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/GHI.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from G-K in  chronological order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/alphabetQuiz-G-K/index.html" class="block p-6 max-w-xl bg-[#F9DBBB] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Alphabets Quiz G-K</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from G-K in  random order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/GHI.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from G-K in  random order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/playAlphabet-L-P/index.html" class="block p-6 max-w-xl bg-[#FDD36A] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Learn Alphabets L-P</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from L-P in  chronological order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/LMN.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from L-P in  chronological order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/alphabetQuiz-L-P/index.html" class="block p-6 max-w-xl bg-[#FDD36A] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Alphabets Quiz L-P</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from L-P in  random order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/LMN.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from L-P in  random order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/playAlphabet-Q-U/index.html" class="block p-6 max-w-xl bg-[#9DC08B] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Learn Alphabets Q-U</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from Q-U in  chronological order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/QRS.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from Q-U in  chronological order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/alphabetQuiz-Q-U/index.html" class="block p-6 max-w-xl bg-[#9DC08B] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Alphabets Quiz Q-U</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from Q-U in  random order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/QRS.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from Q-U in  random order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/playAlphabet-V-Z/index.html" class="block p-6 max-w-xl bg-[#F7C8E0] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Learn Alphabets V-Z</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from V-Z in  chronological order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/VWX.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from V-Z in  chronological order with the help of artificial intelligence.
+    </p>
+</a>
+
+
+        
+<a href="/app/alphabetQuiz-V-Z/index.html" class="block p-6 max-w-xl bg-[#F7C8E0] rounded-lg border border-gray-200 shadow-md ">
+    <div class="flex justify-between align-center">
+        <div class="w-lg">
+            <h5 class="rubik mb-2 text-2xl font-bold tracking-tight  text-gray-900 dark:text-white ">Alphabets Quiz V-Z</h5>
+            <p class="inter font-normal hidden md:block text-gray-700 dark:text-gray-400">
+                Learn alphabets from V-Z in  random order with the help of artificial intelligence.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/img/VWX.png" alt="peace sign" class="w-24 md:w-auto" >
+        </div>
+    </div>
+    <p class="inter font-normal md:hidden mt-4 text-gray-700 dark:text-gray-400">
+        Learn alphabets from V-Z in  random order with the help of artificial intelligence.
+    </p>
+</a>
+
+        
+    </div>
+
+</body>
+<script src="/js/flowbite.js" defer></script>
+
+</html>
