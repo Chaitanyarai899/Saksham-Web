@@ -1,4 +1,4 @@
-# Saksham - Web: A fullstack ML based web app
+# Saksham: A fullstack ML based web app
 
 The project aims to be a one stop solution for specially abled individuals as aims to teach sign language via utility of deep learning and computer vision.
 
