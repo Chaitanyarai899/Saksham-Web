@@ -26,6 +26,57 @@ The project aims to be a one stop solution for specially abled individuals as ai
 - Frontend: NEXT.js, React, TailwindCSS, Javascript
 - Tools: Azure cloud, git, Docker, jupyter notebooks
 
+## Getting Started
+
+### Next.js setup
+Follow these steps to set up the Saksham Web project locally:
+
+#### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine.
+
+#### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Chaitanyarai899/Saksham-Web.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Saksham-Web
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+Visit [http://localhost:3000](http://localhost:3000) in your web browser to see the Saksham Web app.
+
+### ML Setup
+ The MLmicroservices folder contains all the modules for sign language detection model. The code is in multiple jupyter notebooks. To install all required python packages:
+
+ ```bash
+ pip install -r requirements.txt
+```
+
+All models are built using tensorflow in python enviorment and then converted to tensorflow.js format to be compatible with browser.
+
+## Contributing
+
+Feel free to contribute to the project. Fork the repository, make your changes, and submit a pull request.
+
+
 # Some screenshots of the Webapp
 
 ![image](https://github.com/Chaitanyarai899/Saksham-Web/assets/95732261/33770e70-4bd0-46b1-87f7-1de0cefd74e6)
