@@ -2,6 +2,8 @@
 
 The project aims to be a one stop solution for specially abled individuals as aims to teach sign language via utility of deep learning and computer vision.
 
+###### The Live link of the Webapp: https://pnkllj7mlpeu38tfqkve514k4g.ingress.akashprovid.com/
+
 ## Languages and Tools
 
 <div align="">
