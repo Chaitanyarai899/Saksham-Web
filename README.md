@@ -28,7 +28,8 @@ The project aims to be a one stop solution for specially abled individuals as ai
 - Frontend: NEXT.js, React, TailwindCSS, Javascript
 - Tools: Azure cloud, git, Docker, jupyter notebooks
   
-![Sakshamsystemdesign](https://github.com/Chaitanyarai899/Saksham-Web/assets/95732261/c70c8c9f-47d1-48d6-85a5-71c0dcb3ca94)
+![Sakshamsystemdesign](https://github.com/Chaitanyarai899/Saksham-Web/assets/95732261/c6760f7a-48bb-4a60-a725-67dc1c0d8233)
+
 
 ## Getting Started
 
