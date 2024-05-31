@@ -2,7 +2,7 @@
 
 The project aims to be a one stop solution for specially abled individuals as aims to teach sign language via utility of deep learning and computer vision.
 
-###### The Live link of the Webapp: https://saksham-web.vercel.app/
+###### The Live link of the Webapp: https://sakshamml.onrender.com
 
 ## Languages and Tools
 
